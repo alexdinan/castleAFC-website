@@ -1,8 +1,34 @@
 
 
 #getAction hr {
-    width: 85%;
+    width: 80%;
     margin: auto;
     margin-bottom: 2rem;
 }
 
+
+
+
+
+
+
+#formSectionContainer{
+    width: 95%;
+    margin-top: 10%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#addTeamForm hr{
+    width: 80%;
+    margin-bottom: 2rem;
+}
+
+#trackImg{
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    width: 95%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

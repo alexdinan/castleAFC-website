@@ -74,8 +74,78 @@
                 </div>
             </div>
         </div>
+        
 
 
+        <!-- POST requets form section! -->
+        <div id="formSectionContainer">
+
+            <!-- Add a team form section -->
+            <div class="container-fluid pb-5">
+                <div class="row">
+                    <div class="col-md-7 col-lg-6" id="addTeamForm">
+                        <h1 class="display-6 mb-2">Add a new Team:</h1>
+                        <hr>
+                        <form>
+                            <div class="input-group mb-4">
+                                <input type="text" class="form-control" placeholder="Enter team name:">
+                            </div>
+                            <div class="input-group mb-4">
+                                <input type="text" class="form-control" id="inputLogo" placeholder="Enter team logo href (optional parameter):">
+                            </div>
+                            <button type="submit" class="btn btn-dark">Create Team!</button>
+                        </form>
+                    </div>
+
+                    <!-- <div class="col-md-5 col-lg-6" id="imageContainer">
+                        <img id="trackImg" class="img-responsive" src="images/trackpitch.png" alt="football pitch">
+                    </div> -->
+
+                </div>
+            </div>
+
+
+            <!-- Add a fixture form section -->
+            <div class="container-fluid mt-5">
+                <h1 class="display-6 mb-4">Add a new Fixture:</h1>
+                <div class="row">
+                    <div class="col" style="padding-right:2rem;">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Date (dd/mm/yyyy)">
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Score (CAFC-OPP)">
+                        </div>
+                    </div>
+
+                    <div class="col" style="padding-left:2rem;">
+                        <div class="input-group mb-4">
+                            <input type="text" class="form-control" placeholder="Time (hh:mm)">
+                        </div>
+                        <!-- when dropdown clicked - get request made which returns all team names + client JS populates items!-->
+                        <div class="form-group mb-4">
+                            <select class="form-select">
+                                <option selected>Select Opposition</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="input-group mb-4" style="padding-right:1rem;">
+                            <textarea class="form-control" placeholder="Match Report:"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-6" style="padding-left:2rem;">
+                        <button type="submit" class="btn btn-dark">Create new Fixture!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <br><br><br><br><br><br><br><br><br><br>
         <!-- include bootstrap JS and popper via CDN -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     </body>
