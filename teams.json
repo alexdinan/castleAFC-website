@@ -1,0 +1,55 @@
+
+[
+    {
+        "id": 0,
+        "name": "Collingwood-A",
+        "logo": "",
+        "playStyle": {
+            "passing": "lofted passes behind opposition defence",
+            "defence": "high-press",
+            "attack": "counter-attack"
+        }
+    },
+    {
+        "id": 1,
+        "name": "Hatfield-A",
+        "logo": "",
+        "playStyle": {
+            "passing": "grounded passes through opposition lines",
+            "defence": "low-block",
+            "attack": "build-up"
+        }
+    },
+    {
+        "id": 2,
+        "name": "Stephenson-A",
+        "logo": "",
+        "playStyle": {
+            "passing": "drilled, horizontal passes",
+            "defence": "compact",
+            "attack": "high and wide in attack"
+        }
+    },
+    {
+        "id": 3,
+        "name": "Hatfield-B",
+        "logo": "",
+        "playStyle": {
+            "passing": "grounded passes through opposition lines",
+            "defence": "low-block",
+            "attack": "build-up"
+        }
+    },
+    {
+        "id": 4,
+        "name": "Hatfield-C",
+        "logo": "",
+        "playStyle": {
+            "passing": "grounded passes through opposition lines",
+            "defence": "low-block",
+            "attack": "build-up"
+        }
+    }
+
+
+]

@@ -14,7 +14,7 @@
     <body>
 
         <!-- NAVBAR CODE -->
-        <nav class="navbar navbar-expand-md navbar-light px-4 bg-danger text-black">
+        <nav class="navbar navbar-expand-md navbar-light px-4 bg-danger text-black sticky-top">
             <div class="d-flex flex-row align-items-center">
                 <a class="navbar-brand" href="#"><img src="images/logo.png" alt="University college emblem"></a>
                 <h2 class="px-1">Castle AFC</h2>
@@ -41,18 +41,6 @@
                 </ul>
             </div>
         </nav>
-
-
-        
-        <!-- <div class="row p-4 bg-white">
-            <div class="col-md-4 col-sm-12">
-                <img class="w-100 mb-3 rounded" src="images/maidencastle.png" alt="">
-                <img class="w-100 mb-3 rounded" src="images/trackpitch.png" alt="">
-            </div>
-            <div class="col-md-8 pt-1 mb-3">
-                <img class="w-100 rounded" src="images/trackpitch.png" alt="">
-            </div>
-        </div> -->
 
 
         <!-- Actions section -->
@@ -83,7 +71,7 @@
             <!-- Add a team form section -->
             <div class="container-fluid pb-5">
                 <div class="row">
-                    <div class="col-md-7 col-lg-6" id="addTeamForm">
+                    <div class="col-md-7 col-lg-6 mb-4" id="addTeamForm">
                         <h1 class="display-6 mb-2">Add a new Team:</h1>
                         <hr>
                         <form>
@@ -97,50 +85,52 @@
                         </form>
                     </div>
 
-                    <!-- <div class="col-md-5 col-lg-6" id="imageContainer">
-                        <img id="trackImg" class="img-responsive" src="images/trackpitch.png" alt="football pitch">
-                    </div> -->
+                    <div class="col-md-5 col-lg-6" id="imageContainer">
+                        <img id="pitchPhoto" class="img-responsive" src="images/pitch.png" alt="football pitch">
+                    </div>
 
                 </div>
             </div>
 
-
             <!-- Add a fixture form section -->
             <div class="container-fluid mt-5">
-                <h1 class="display-6 mb-4">Add a new Fixture:</h1>
-                <div class="row">
-                    <div class="col" style="padding-right:2rem;">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Date (dd/mm/yyyy)">
+                <h1 class="display-6 mb-2">Add a new Fixture:</h1>
+                <hr>
+                <form>
+                    <div class="row">
+                        <div class="col" style="padding-right:2rem;">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" placeholder="Date (dd/mm/yyyy)">
+                            </div>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" placeholder="Score (CAFC-OPP)">
+                            </div>
                         </div>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Score (CAFC-OPP)">
+
+                        <div class="col" style="padding-left:2rem;">
+                            <div class="input-group mb-4">
+                                <input type="text" class="form-control" placeholder="Time (hh:mm)">
+                            </div>
+                            <!-- when dropdown clicked - get request made which returns all team names + client JS populates items!-->
+                            <div class="form-group mb-4">
+                                <select class="form-select">
+                                    <option selected>Select Opposition</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="col" style="padding-left:2rem;">
-                        <div class="input-group mb-4">
-                            <input type="text" class="form-control" placeholder="Time (hh:mm)">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="input-group mb-4" style="padding-right:1rem;">
+                                <textarea class="form-control" placeholder="Match Report:"></textarea>
+                            </div>
                         </div>
-                        <!-- when dropdown clicked - get request made which returns all team names + client JS populates items!-->
-                        <div class="form-group mb-4">
-                            <select class="form-select">
-                                <option selected>Select Opposition</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="input-group mb-4" style="padding-right:1rem;">
-                            <textarea class="form-control" placeholder="Match Report:"></textarea>
+                        <div class="col-md-6" style="padding-left:2rem;">
+                            <button type="submit" class="btn btn-dark">Create new Fixture!</button>
                         </div>
                     </div>
-                    <div class="col-md-6" style="padding-left:2rem;">
-                        <button type="submit" class="btn btn-dark">Create new Fixture!</button>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
 
