@@ -1,7 +1,7 @@
 
 
 #getAction hr {
-    width: 80%;
+    width: 90%;
     border: 1px dashed rgba(255, 0,0);
     margin: auto;
     margin-bottom: 2rem;
@@ -9,7 +9,7 @@
 
 
 #formSectionContainer{
-    width: 95%;
+    width: 90%;
     margin-top: 10%;
     margin-left: auto;
     margin-right: auto;
@@ -30,4 +30,14 @@
 
 #pitchPhoto{
     width: 90%;
+}
+
+
+/* actual stuff here! */
+
+
+.wrapper{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
 }
