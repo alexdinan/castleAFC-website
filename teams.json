@@ -1,102 +1,102 @@
 
 [
     {
-        "id": 0,
         "name": "Collingwood-A",
-        "logo": "",
         "playStyle": {
-            "passing": "lofted passes behind opposition defence",
+            "passing": "lofted passes behind opposition defencehhhhhhhjhjhjhjhjhjhjhjhjhjhjhjhjhjhjhjhjhjhjhjhjhjhjhjhjhjhjhjhjhjhjhjhjhjhjhjhjhjh",
             "defence": "high-press",
+            "passinge": "grounded passes through opposition lines",
+            "defencee": "low-block",
             "attack": "counter-attack"
         }
     },
     {
-        "id": 1,
         "name": "Hatfield-A",
-        "logo": "https://www.flickr.com/photos/197205953@N07/52577871660/in/dateposted-public/",
         "playStyle": {
             "passing": "grounded passes through opposition lines",
             "defence": "low-block",
-            "attack": "build-up"
+            "attack": "build-up",
+            "passinge": "grounded passes through opposition lines",
+            "defencee": "low-block"
         }
     },
     {
-        "id": 2,
         "name": "Stephenson-A",
-        "logo": "",
         "playStyle": {
             "passing": "drilled, horizontal passes",
             "defence": "compact",
+            "passinge": "grounded passes through opposition lines",
+            "defencee": "low-block",
             "attack": "high and wide in attack"
         }
     },
     {
-        "id": 3,
         "name": "Hatfield-B",
-        "logo": "",
         "playStyle": {
             "passing": "grounded passes through opposition lines",
             "defence": "low-block",
+            "passinge": "grounded passes through opposition lines",
+            "defencee": "low-block",
             "attack": "build-up"
         }
     },
     {
-        "id": 4,
         "name": "Hatfield-C",
-        "logo": "",
         "playStyle": {
             "passing": "grounded passes through opposition lines",
             "defence": "low-block",
+            "passinge": "grounded passes through opposition lines",
+            "defencee": "low-block",
             "attack": "build-up"
         }
     },
     {
-        "id": 0,
         "name": "Collingwood-B",
-        "logo": "",
         "playStyle": {
             "passing": "lofted passes behind opposition defence",
             "defence": "high-press",
+            "passinge": "grounded passes through opposition lines",
+            "defencee": "low-block",
             "attack": "counter-attack"
         }
     },
     {
-        "id": 1,
         "name": "Hatfield-E",
-        "logo": "https://www.flickr.com/photos/197205953@N07/52577871660/in/dateposted-public/",
         "playStyle": {
             "passing": "grounded passes through opposition lines",
             "defence": "low-block",
+            "passinge": "grounded passes through opposition lines",
+            "defencee": "low-block",
             "attack": "build-up"
         }
     },
     {
-        "id": 2,
         "name": "Stephenson-B",
-        "logo": "",
         "playStyle": {
             "passing": "drilled, horizontal passes",
             "defence": "compact",
+            "passinge": "grounded passes through opposition lines",
+            "defencee": "low-block",
             "attack": "high and wide in attack"
         }
     },
     {
-        "id": 3,
         "name": "Hatfield-F",
-        "logo": "",
         "playStyle": {
             "passing": "grounded passes through opposition lines",
             "defence": "low-block",
+            "passinge": "grounded passes through opposition lines",
+            "defencee": "low-block",
             "attack": "build-up"
         }
     },
     {
-        "id": 4,
         "name": "Hatfield-G",
-        "logo": "",
         "playStyle": {
             "passing": "grounded passes through opposition lines",
             "defence": "low-block",
+            "passinge": "grounded passes through opposition lines",
+            "defencee": "low-block",
             "attack": "build-up"
         }
     }

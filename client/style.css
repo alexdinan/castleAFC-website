@@ -2,7 +2,7 @@
 
 #getAction hr {
     width: 90%;
-    border: 1px dashed rgba(255, 0,0);
+    border: 1px dashed rgba(255,0,0);
     margin: auto;
     margin-bottom: 2rem;
 }
@@ -31,9 +31,8 @@
 
 
 .wrapper{
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
+    padding-left: 5%;
+    padding-right: 5%;
 }
 
 
@@ -56,7 +55,34 @@
 }
 
 .bg-muted{
-    background-color: rgb(255,255,255,0.5);
+    background-color: rgb(244,244,244,0.5);
 }
 
+.bg-grey1{
+    background-color: rgb(244,244,244);
+}
+
+.bg-grey2{
+    background-color: rgb(230,230,230,0.8);
+}
+
+.line-break{
+    width: 80%;
+    border: 1px dashed red;
+    margin-bottom: 2rem;
+}
+
+
+.card-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.team-card{
+    width: 65%;
+    margin-left: auto;
+    margin-right: auto;
+}
 
