@@ -19,7 +19,7 @@ async function listTeams(){
         //add html list element for each team
         let teamList = "";
         for (const team of teamNames){
-            teamList += `<li class="team-list-item list-group-item">${team}</li>`;
+            teamList += `<li class="team-list-item list-group-item"><span class="text-danger">${team}</span></li>`;
         }
         //add to DOM
         document.getElementById("teamHeading").innerHTML = "Teams:";
@@ -32,11 +32,19 @@ async function listTeams(){
 
     }catch(error){
         //add 404 handling
+        alert(error);
     }
 }
 
 
 
 async function getTeamDetails(teamName){
-    alert(`You clicked ${teamName}`);
+    try{
+        //send get request + parse response
+        const details = JSON.parse(await (await fetch(endPointRoot + `teaminfo?name=${teamName}`)).text());
+        
+
+    }catch(error){
+        alert(error);
+    }
 }
