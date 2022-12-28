@@ -15,19 +15,20 @@ app.use(express.static("client"));
 
 //get teams from json file
 let teams = require("./teams.json");
+let fixtures = require("./fixtures.json");
 
 
 
 
 //get request - returns list of team names
 app.get("/teams", (req,resp) => {
-    let response = [];
+    let teamList = [];
     for(const t of teams){
-        response.push(t.name);
+        teamList.push(t.name);
     }
     //set content-type
     resp.setHeader("content-type" , "application/json");
-    resp.send(JSON.stringify(response));
+    resp.send(JSON.stringify(teamList));
 });
 
 
@@ -47,8 +48,28 @@ app.get("/teaminfo", (req,resp) => {
         }
     }
     //no match found - send 400 BAD request
-    resp.status(400).send(JSON.stringify(`BAD REQUEST: No team matches the name ${teamName}`));
+    resp.status(400).send(JSON.stringify(`BAD REQUEST: No team matches the name: ${teamName}`));
 });
+
+
+
+
+
+//returns list of objects with date,opposition name for each fixture - REFER TO STACK OVERFLOW PAGE!!!!!!!!!!!!!!!!
+app.get("/fixtures", (req,resp) => {
+    let fixtureList = [];
+
+    //function for object destructuring/initialisation
+    const subset = ( ({date , time, opposition}) => ({date ,time, opposition}));
+
+    for(const fixture of fixtures){
+        fixtureList.push(subset(fixture));
+    }
+    //set content-type and send
+    resp.setHeader("content-type", "application/json");
+    resp.status(200).send(JSON.stringify(fixtureList));
+});
+
 
 
 

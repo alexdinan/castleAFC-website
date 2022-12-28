@@ -8,6 +8,9 @@ const endPointRoot = "http://127.0.0.1:8090/";
 const getTeamsBtn = document.getElementById("getTeams");
 getTeamsBtn.addEventListener('click' , listTeams);
 
+const getFixturesBtn = document.getElementById("getFixtures");
+getFixturesBtn.addEventListener('click', listFixtures);
+
 
 
 async function listTeams(){
@@ -21,6 +24,7 @@ async function listTeams(){
             teamList += `<li class="team-list-item list-group-item"><span class="text-dark">${team}</span></li>`;
         }
         //add to DOM
+        document.getElementById("teamSection").className += " pt-5 pb-5";
         document.getElementById("teamHeading").innerHTML = "Teams:";
         document.getElementById("teamSmallText").innerHTML = "click items below to load team details!";
         document.getElementById("teamNameList").innerHTML = teamList;
@@ -52,6 +56,49 @@ async function getTeamDetails(teamName){
             body += `<div class="d-flex flex-row"><h6>${key}:    <span class="text-primary">${value}</span></div><hr>`;
         }
         document.getElementById("cardBody").innerHTML = body;
+
+
+    }catch(error){
+        alert(error);
+    }
+}
+
+
+
+async function listFixtures(){
+    try{
+        //send get request to server and parse response
+        const fixtureList = JSON.parse(await (await fetch(endPointRoot + "fixtures")).text());
+
+        //add title and padding etc...
+        document.getElementById("fixtureSection").className += " pt-5 pb-5 bg-grey2";
+        document.getElementById("fixtureHeading").innerHTML = "Fixtures:";
+
+        //create thead (table heading row)
+        let thead = "<tr>";
+        for(const key of Object.keys(fixtureList[0])){
+            thead += `<th class="text-center" scope="col">${key}</th>`
+        }
+        document.getElementById("fixtureThead").innerHTML = thead + `<th class="text-center">Click for Details</th></tr>`;
+
+
+        //create table body
+        let body = "";
+        for(const fixture of fixtureList){
+            body += "<tr>"
+            for(const [key,value] of Object.entries(fixture)){
+                body += `<td class="text-center">${value}</td>`;
+            }
+            body += `<td class="text-center text-primary fixDetails">Show Details</td></tr>`
+        }
+        document.getElementById("fixtureTableBody").innerHTML = body;
+
+
+        //add event listeners to show details table elements
+        for(const button of document.querySelectorAll(".fixDetails")){
+            button.addEventListener('click', (e) => {alert(e)});
+        }
+
 
 
     }catch(error){
