@@ -26,9 +26,8 @@ app.get("/teams", (req,resp) => {
     for(const t of teams){
         teamList.push(t.name);
     }
-    //set content-type
-    resp.setHeader("content-type" , "application/json");
-    resp.send(JSON.stringify(teamList));
+
+    resp.status(200).json(teamList);
 });
 
 
@@ -36,19 +35,17 @@ app.get("/teams", (req,resp) => {
 
 //returns detail of an individual team
 app.get("/teaminfo", (req,resp) => {
-
     const teamName = req.query.name;
-    resp.setHeader("content-type", "application/json");
 
     for(const t of teams){
         //if match found - send back team + return
         if (t.name === teamName){
-            resp.send(t);
+            resp.status(200).json(t);
             return
         }
     }
     //no match found - send 400 BAD request
-    resp.status(400).send(JSON.stringify(`BAD REQUEST: No team matches the name: ${teamName}`));
+    resp.status(400).json(`BAD REQUEST: No team matches the name: ${teamName}`);
 });
 
 
@@ -60,18 +57,31 @@ app.get("/fixtures", (req,resp) => {
     let fixtureList = [];
 
     //function for object destructuring/initialisation
-    const subset = ( ({date , time, opposition}) => ({date ,time, opposition}));
+    const subset = ( ({date, time, opposition}) => ({date, time, opposition}));
 
     for(const fixture of fixtures){
         fixtureList.push(subset(fixture));
     }
-    //set content-type and send
-    resp.setHeader("content-type", "application/json");
-    resp.status(200).send(JSON.stringify(fixtureList));
+    
+    resp.status(200).json(fixtureList);
 });
 
 
 
+
+//returns details of an individual fixture
+app.get("/fixtureinfo", (req,resp) => {
+    const date = req.query.date;
+    const oppo = req.query.opposition;
+
+    for(const f of fixtures){
+        if( f.date === date & f.opposition === oppo){
+            resp.status(200).json(f);
+        }
+    }
+    //no match found => BAD request
+    resp.status(400).json(`BAD request no fixtures match date: ${date}, opposition: ${oppo}`);
+});
 
 
 

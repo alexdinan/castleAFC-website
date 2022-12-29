@@ -31,7 +31,7 @@ async function listTeams(){
        
         //add event listeners
         for(const li of document.querySelectorAll(".team-list-item")){
-            li.addEventListener("click", (event) => getTeamDetails(event.target.textContent));
+            li.addEventListener("click", (e) => getTeamDetails(e.target.textContent));
         }
     }catch(error){
         //add 404 handling
@@ -74,34 +74,48 @@ async function listFixtures(){
         document.getElementById("fixtureSection").className += " pt-5 pb-5 bg-grey2";
         document.getElementById("fixtureHeading").innerHTML = "Fixtures:";
 
+        
         //create thead (table heading row)
         let thead = "<tr>";
         for(const key of Object.keys(fixtureList[0])){
-            thead += `<th class="text-center" scope="col">${key}</th>`
+            thead += `<th class="text-center" scope="col">${key}</th>`;
         }
-        document.getElementById("fixtureThead").innerHTML = thead + `<th class="text-center">Click for Details</th></tr>`;
+        document.getElementById("fixtureThead").innerHTML = thead + "</tr>";
 
 
         //create table body
         let body = "";
         for(const fixture of fixtureList){
-            body += "<tr>"
+            body += `<tr class="fixTableRow">`;
             for(const [key,value] of Object.entries(fixture)){
-                body += `<td class="text-center">${value}</td>`;
+                body += `<td class="${key} text-center">${value}</td>`;
             }
-            body += `<td class="text-center text-primary fixDetails">Show Details</td></tr>`
+            body += "</tr>";
         }
         document.getElementById("fixtureTableBody").innerHTML = body;
 
 
-        //add event listeners to show details table elements
-        for(const button of document.querySelectorAll(".fixDetails")){
-            button.addEventListener('click', (e) => {alert(e)});
+        //add event listeners to table rows
+        for(const tableRow of document.querySelectorAll(".fixTableRow")){
+            tableRow.addEventListener("click", (e) => {
+                //get date + opposition from event target
+                const date = e.target.parentNode.querySelector(".date").textContent;
+                const oppo = e.target.parentNode.querySelector(".opposition").textContent;
+                getFixtureDetails(date,oppo);
+            });
         }
-
-
 
     }catch(error){
         alert(error);
     }
+}
+
+
+
+
+
+async function getFixtureDetails(date, oppo){
+    //send get request + parse response
+    const details = JSON.parse(await (await fetch(`${endPointRoot}fixtureinfo?date=${date}&opposition=${oppo}`)).text());
+    
 }
