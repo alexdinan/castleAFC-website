@@ -71,7 +71,7 @@ async function listFixtures(){
         const fixtureList = JSON.parse(await (await fetch(endPointRoot + "fixtures")).text());
 
         //add title and padding etc...
-        document.getElementById("fixtureSection").className += " pt-5 pb-5 bg-grey2";
+        document.getElementById("fixtureTableSection").className += " pt-5 pb-5 bg-grey2";
         document.getElementById("fixtureHeading").innerHTML = "Fixtures:";
 
         
@@ -115,7 +115,36 @@ async function listFixtures(){
 
 
 async function getFixtureDetails(date, oppo){
-    //send get request + parse response
-    const details = JSON.parse(await (await fetch(`${endPointRoot}fixtureinfo?date=${date}&opposition=${oppo}`)).text());
+    //send get request + parse response - fixture details
+    const f = JSON.parse(await (await fetch(`${endPointRoot}fixtureinfo?date=${date}&opposition=${oppo}`)).text());
+
+    //create top row with date time and competition
+    let timeRow = document.getElementById("timeRow");
+    timeRow.innerHTML = `<div class="p-3 col">${f.date}</div><div class="p-3 col">${f.competition}</div><div class="p-3 col">${f.time}</div>`;
+   
     
+    //create middle row with teams and score
+    let scoreRow = document.getElementById("scoreRow");
+    scoreRow.className += " bg-white";
+    //add color to score - depending on w/d/l
+    let color = "";
+    if (f.goalsFor > f.goalsAgainst){
+        color="text-success";
+    }else if(f.goalsFor === f.goalsAgainst){
+        color="text-warning";
+    }else{
+        color="text-danger";
+    }
+
+    scoreRow.innerHTML = `<div class="p-2 col display-6 my-auto">Castle A</div>
+                        <div class="score p-2 col display-4 ${color}">${f.goalsFor} - ${f.goalsAgainst}</div>
+                        <div class="oppo p-2 col display-6 my-auto">${f.opposition}</div>`;
+
+    //create match report row
+    let reportRow = document.getElementById("reportRow");
+    reportRow.innerHTML = f.report;
+    reportRow.className += " bg-white";
+
+    //add event listener for opposition team button - REDO!!!
+    scoreRow.querySelector(".oppo").addEventListener("click", (e) => getTeamDetails(e.target.textContent));
 }
