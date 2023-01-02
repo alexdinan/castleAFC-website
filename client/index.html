@@ -56,7 +56,7 @@
             <hr>
             <div class="row pb-4">
                 <div class="col-xs-6 col-sm-4 text-center p-2">
-                    <button type="button" class="btn btn-dark" id="getFixtures">Get Fixture List</button>
+                    <a href="#fixtureTableSection"><span><button type="button" class="btn btn-dark" id="getFixtures">Get Fixture List</button></span></a>
                     <p class="lead">Lists all premier fixture details</p>
                 </div>
                 <div class="col-xs-6 col-sm-4 text-center p-2">
@@ -74,13 +74,13 @@
         <!-- TEAM SECTION (modified by client.js)-->
         <div id="teamSection" class="container-fluid wrapper">
             <div class="row">
-                <div class="col-lg-5 col-md-6 col-sm-5">
+                <div class="col-lg-4 col-md-4">
                     <h5 id="teamHeading" class="display-4 mb-1"></h5>
                     <p id="teamSmallText" class="text-secondary mb-3"></p>
                     <ol id="teamNameList" class="list-group list-group-numbered list-group-flush"></ol>
                 </div>
                 
-                <div class="card-container col-lg-7 col-md-6 col-sm-7">
+                <div class="card-container col-lg-8 col-md-8">
                     <div class="mt-4 team-card">
                         <div id="cardHeader" class="d-flex flex-row bg-danger"></div>
                         <div id="cardBody" class="card-body"></div>
@@ -92,7 +92,7 @@
 
 
         <!-- Fixture List section! (manipulated by client.js)-->
-        <div id="fixtureTableSection" class="container-fluid wrapper">
+        <div id="fixtureTableSection" class="container-fluid wrapper mb-5">
             <div class="row mb-5">
                 <h5 id="fixtureHeading" class="display-4 mb-5"></h5>
 
@@ -104,85 +104,128 @@
 
             <div class="container">
                 <div id="timeRow" class="row text-center text-white align-items-start bg-dark"></div>
-                <div id="scoreRow" class="text-center row align-items-start pt-2 pb-2"></div>
-                <div id="reportRow" class="row p-3 text-left"></div>
+                <div id="scoreRow" class="text-center row align-items-start pt-3 pb-1"></div>
+                <div id="reportRow" class="row p-4 text-left"></div>
             </div>
         </div>
 
 
 
+        <!-- Form section! -->
+        <div class="container-fluid wrapper mt-5">
+            <div class="row">
 
+                <div class="col-lg-5">
+                    <div class="w-90 mx-auto">
+                        <div class="headingBox py-2 mb-1">
+                            <h4 class="display-5">Add a new Team:</h4>
+                            <hr class="line-break">
+                        </div>
 
-
-        <!-- POST requets form section! -->
-        <div id="formSectionContainer">
-
-            <!-- Add a team form section -->
-            <div class="container-fluid pb-5">
-                <div class="row">
-                    <div class="col-md-7 col-lg-6 mb-4" id="addTeamForm">
-                        <h1 class="display-6 mb-2">Add a new Team:</h1>
-                        <hr>
-                        <form>
-                            <div class="input-group mb-4">
-                                <input type="text" class="form-control" placeholder="Enter team name:">
+                        <form action="">
+                            <div class="form-floating mb-4 required">
+                                <input type="text" id="name" class="form-control form-input" placeholder="e.g. Collingwood-A">
+                                <label for="name">Name: <span class="required-asterisk">*</span></label>
                             </div>
-                            <div class="input-group mb-4">
-                                <input type="text" class="form-control" id="inputLogo" placeholder="Enter team logo href (optional parameter):">
+
+                            <div class="row mb-4">
+                                <h6 class="py-2">Ratings: <span class="text-muted">(enter a number 0-100)</span></h6>
+                                <div class="col">
+                                    <div class="form-floating required">
+                                        <input type="text" id="attack" class="form-control form-input" placeholder="Rating 0-100">
+                                        <label for="attack">Attack <span class="required-asterisk">*</span></label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-floating required">
+                                        <input type="text" id="midfield" class="form-control form-input" placeholder="Rating 0-100">
+                                        <label for="midfield">Midfield <span class="required-asterisk">*</span></label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-floating required">
+                                        <input type="text" id="defence" class="form-control form-input" placeholder="Rating 0-100">
+                                        <label for="defence">Defense <span class="required-asterisk">*</span></label>
+                                    </div>
+                                </div>
                             </div>
-                            <button type="submit" class="btn btn-dark">Create Team!</button>
+
+                            <div class="form-floating mb-4">
+                                <textarea id="playStyle" class="form-control form-input" placeholder="n/a"></textarea>
+                                <label for="playStyle">Description of playstyle:</label>
+                            </div>
+                            <button type="submit" class="btn btn-dark">Submit</button>
                         </form>
                     </div>
-
-                    <div class="col-md-5 col-lg-6 imageContainer">
-                        <img id="pitchPhoto" class="img-responsive" src="images/pitch.png" alt="football pitch">
-                    </div>
-
                 </div>
-            </div>
-
-            <!-- Add a fixture form section -->
-            <div class="container-fluid mt-5">
-                <h1 class="display-6 mb-2">Add a new Fixture:</h1>
-                <hr>
-                <form>
-                    <div class="row">
-                        <div class="col" style="padding-right:2rem;">
-                            <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Date (dd/mm/yyyy)">
-                            </div>
-                            <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Score (CAFC-OPP)">
-                            </div>
+                <div class="col-lg-1 mb-5"></div>
+                <div class="col-lg-6">
+                    <div class="w-90 mx-auto">
+                        <div class="headingBox py-2 mb-1">
+                            <h4 class="display-5">Add a Fixture:</h4>
+                            <hr class="line-break">
                         </div>
 
-                        <div class="col" style="padding-left:2rem;">
-                            <div class="input-group mb-4">
-                                <input type="text" class="form-control" placeholder="Time (hh:mm)">
+                        <form action="">
+
+                            <div class="row mb-4">
+                                <div class="col">
+                                    <div class="form-floating required">
+                                        <input type="text" id="date" class="form-control form-input" placeholder="dd/mm/yyyy">
+                                        <label for="date">Date <span class="required-asterisk">*</span></label>
+                                        <small class="form-text text-muted">DD/MM/YYYY</small>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-floating required">
+                                        <input type="text" id="time" class="form-control form-input" placeholder="hh:mm">
+                                        <label for="time">Time <span class="required-asterisk">*</span></label>
+                                        <small class="form-text text-muted">HH:MM</small>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-floating required">
+                                        <input type="text" id="score" class="form-control form-input" placeholder="x-y">
+                                        <label for="date">Score <span class="required-asterisk">*</span></label>
+                                        <small class="form-text text-muted">CAFC-OPP</small>
+                                    </div>
+                                </div>
                             </div>
-                            <!-- when dropdown clicked - get request made which returns all team names + client JS populates items!-->
-                            <div class="form-group mb-4">
-                                <select class="form-select">
-                                    <option selected>Select Opposition</option>
-                                </select>
+
+                            <div class="row mb-4">
+                                <div class="col-7">
+                                    <div class="form-floating required">
+                                        <input type="text" id="competition" class="form-control form-input" placeholder="cup/prem">
+                                        <label for="competition">Competition <span class="required-asterisk">*</span></label>
+                                    </div>
+                                </div>
+                                <div class="col-5">
+                                    <label for="teamSelect mb-5">Select Opposition <span class="required-asterisk">*</span></label>
+                                    <select name="team" id="teamSelect" class="form-control form-input">
+                                        <option selected>...</option>
+                                        <option value="Hatfield-A">Hatfield-A</option>
+                                        <option value="Hatfield-A">Hatfield-A</option>
+                                        <option value="Hatfield-A">Hatfield-A</option>
+                                        <option value="Hatfield-A">Hatfield-A</option>
+                                        <option value="Hatfield-A">Hatfield-A</option>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
+
+                            <div class="form-floating mb-4">
+                                <textarea id="report" class="form-control form-input" placeholder="n/a"></textarea>
+                                <label for="playStyle">Match Report:</label>
+                            </div>
+                            <button type="submit" class="btn btn-dark">Submit</button>
+                        </form>
                     </div>
-
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="input-group mb-4" style="padding-right:1rem;">
-                                <textarea class="form-control" placeholder="Match Report:"></textarea>
-                            </div>
-                        </div>
-                        <div class="col-md-6" style="padding-left:2rem;">
-                            <button type="submit" class="btn btn-dark">Create new Fixture!</button>
-                        </div>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
 
+
+
+        
 
         <br><br><br><br><br><br><br><br><br><br>
         <!-- include bootstrap JS and popper via CDN + client side js -->

@@ -33,6 +33,7 @@
 .wrapper{
     padding-left: 5%;
     padding-right: 5%;
+    margin-right:auto;
 }
 
 
@@ -66,6 +67,7 @@
     background-color: rgb(230,230,230,0.8);
 }
 
+
 .line-break{
     width: 80%;
     border: 1px dashed red;
@@ -90,5 +92,25 @@
 .oppo{
     text-decoration: underline;
     font-style: italic;
+    color:black;
 }
 
+.line-break{
+    width: 100%;
+    border: 1px dashed red;
+}
+
+.form-input{
+    border: none;
+    border-radius: 0px;
+    background: #F2F2F2;
+}
+
+
+.required-asterisk{
+    color: red;
+}
+
+.btn{
+    border-radius: 0px;
+}

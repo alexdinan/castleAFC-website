@@ -122,7 +122,7 @@ async function getFixtureDetails(date, oppo){
     let timeRow = document.getElementById("timeRow");
     timeRow.innerHTML = `<div class="p-3 col">${f.date}</div><div class="p-3 col">${f.competition}</div><div class="p-3 col">${f.time}</div>`;
    
-    
+
     //create middle row with teams and score
     let scoreRow = document.getElementById("scoreRow");
     scoreRow.className += " bg-white";
@@ -138,13 +138,16 @@ async function getFixtureDetails(date, oppo){
 
     scoreRow.innerHTML = `<div class="p-2 col display-6 my-auto">Castle A</div>
                         <div class="score p-2 col display-4 ${color}">${f.goalsFor} - ${f.goalsAgainst}</div>
-                        <div class="oppo p-2 col display-6 my-auto">${f.opposition}</div>`;
+                        <a href="#getAction" class="oppo p-2 col display-6 my-auto">${f.opposition}</a>`;
 
     //create match report row
     let reportRow = document.getElementById("reportRow");
     reportRow.innerHTML = f.report;
     reportRow.className += " bg-white";
 
-    //add event listener for opposition team button - REDO!!!
-    scoreRow.querySelector(".oppo").addEventListener("click", (e) => getTeamDetails(e.target.textContent));
+    //add event listener for opposition team button!
+    scoreRow.querySelector(".oppo").addEventListener("click", (e) => {
+        getTeamDetails(e.target.textContent);
+        listTeams();
+    });
 }
