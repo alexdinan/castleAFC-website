@@ -156,3 +156,31 @@ async function getFixtureDetails(date, oppo){
         listTeams();
     });
 }
+
+
+
+
+
+
+
+async function addTeam(){
+    const teamForm = document.getElementById("teamForm");
+    teamForm.addEventListener("submit", async function(e){
+        //single-page app => prevent form submission
+        e.preventDefault();
+        
+        //automatic browser form validation
+        const valid = teamForm.checkValidity();
+        teamForm.classList.add("was-validated");
+
+        if(valid){
+            console.log("here");
+            const jsonData = JSON.stringify(Object.fromEntries(new FormData(teamForm)));
+            console.log(jsonData);
+        }
+    })
+}
+
+
+
+addTeam();
