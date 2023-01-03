@@ -46,17 +46,22 @@ async function getTeamDetails(teamName){
         //send get request + parse response
         const details = JSON.parse(await (await fetch(endPointRoot + `teaminfo?name=${teamName}`)).text());
 
-        //add title + image to header
-        const header = document.getElementById("cardHeader");
-        header.innerHTML=`<h1 class="card-title mt-3 mb-3 mx-auto my-auto">${details.name}</h1>`;
 
-        //add playstyle information
-        let body = "<hr>";
-        for(const [key,value] of Object.entries(details.playStyle)){
-            body += `<div class="d-flex flex-row"><h6>${key}:    <span class="text-primary">${value}</span></div><hr>`;
+        //add team name to title box
+        document.getElementById("teamNameBox").innerHTML = `<h5 class="text-center display-5 py-3">${details.name}</h5>`;
+
+        //add ratings to Dom
+        let ratingsHtml = "";
+        for(const [key,val] of Object.entries(details.ratings)){
+            ratingsHtml += `<div class="col"><h4>${key}</h4><h4 class="display-4 text-success">${val}</h4></div>`;
         }
-        document.getElementById("cardBody").innerHTML = body;
+        document.getElementById("teamRatingsRow").innerHTML = ratingsHtml;
 
+        //add playstyle description
+        document.getElementById("styleCont").innerHTML = `<h5 class="px-3">Playstyle Description:</h5><p class="px-3 py-2">${details.playstyle}</p>`;
+
+        //add appropriate border
+        document.querySelector(".colContainer").className += " border";
 
     }catch(error){
         alert(error);

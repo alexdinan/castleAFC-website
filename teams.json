@@ -1,6 +1,17 @@
 
 [
     {
+        "name": "Pooey-A's",
+        "ratings":{
+            "Forwards":69,
+            "Midfield":69,
+            "Defence":69
+        },
+        "playstyle":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam laoreet semper ligula, sit amet faucibus arcu faucibus non. Phasellus."
+    },
+
+
+    {
         "name": "Collingwood-A",
         "playStyle": {
             "passing": "lofted passes behind opposition defencehhh",
