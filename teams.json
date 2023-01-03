@@ -1,114 +1,94 @@
 
 [
+
     {
-        "name": "Pooey-A's",
+        "name": "Collingwood-A",
+        "ratings":{
+            "Forwards":80,
+            "Midfield":69,
+            "Defence":49
+        },
+        "playstyle":"Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    },
+    {
+        "name": "Hatfield-A",
+        "ratings":{
+            "Forwards":69,
+            "Midfield":71,
+            "Defence":2
+        },
+        "playstyle":"Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    },
+    {
+        "name": "Stephenson-A",
+        "ratings":{
+            "Forwards":86,
+            "Midfield":67,
+            "Defence":69
+        },
+        "playstyle":"Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    },
+    {
+        "name": "Hatfield-B",
         "ratings":{
             "Forwards":69,
             "Midfield":69,
             "Defence":69
         },
-        "playstyle":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam laoreet semper ligula, sit amet faucibus arcu faucibus non. Phasellus."
-    },
-
-
-    {
-        "name": "Collingwood-A",
-        "playStyle": {
-            "passing": "lofted passes behind opposition defencehhh",
-            "defence": "high-press",
-            "passinge": "grounded passes through opposition lines",
-            "defencee": "low-block",
-            "attack": "counter-attack"
-        }
-    },
-    {
-        "name": "Hatfield-A",
-        "playStyle": {
-            "passing": "grounded passes through opposition lines",
-            "defence": "low-block",
-            "attack": "build-up",
-            "passinge": "grounded passes through opposition lines",
-            "defencee": "low-block"
-        }
-    },
-    {
-        "name": "Stephenson-A",
-        "playStyle": {
-            "passing": "drilled, horizontal passes",
-            "defence": "compact",
-            "passinge": "grounded passes through opposition lines",
-            "defencee": "low-block",
-            "attack": "high and wide in attack"
-        }
-    },
-    {
-        "name": "Hatfield-B",
-        "playStyle": {
-            "passing": "grounded passes through opposition lines",
-            "defence": "low-block",
-            "passinge": "grounded passes through opposition lines",
-            "defencee": "low-block",
-            "attack": "build-up"
-        }
+        "playstyle":"Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit."
     },
     {
         "name": "Hatfield-C",
-        "playStyle": {
-            "passing": "grounded passes through opposition lines",
-            "defence": "low-block",
-            "passinge": "grounded passes through opposition lines",
-            "defencee": "low-block",
-            "attack": "build-up"
-        }
+        "ratings":{
+            "Forwards":69,
+            "Midfield":69,
+            "Defence":69
+        },
+        "playstyle":"Lorem ipsum dolor sit amet, consectetur adipiscing elit."
     },
     {
         "name": "Collingwood-B",
-        "playStyle": {
-            "passing": "lofted passes behind opposition defence",
-            "defence": "high-press",
-            "passinge": "grounded passes through opposition lines",
-            "defencee": "low-block",
-            "attack": "counter-attack"
-        }
+        "ratings":{
+            "Forwards":69,
+            "Midfield":69,
+            "Defence":69
+        },
+        "playstyle":"Lorem ipsum dolor sit amet, consectetur adipiscing elit."
     },
     {
         "name": "Hatfield-E",
-        "playStyle": {
-            "passing": "grounded passes through opposition lines",
-            "defence": "low-block",
-            "passinge": "grounded passes through opposition lines",
-            "defencee": "low-block",
-            "attack": "build-up"
-        }
+        "ratings":{
+            "Forwards":69,
+            "Midfield":69,
+            "Defence":69
+        },
+        "playstyle":"Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit."
     },
     {
         "name": "Stephenson-B",
-        "playStyle": {
-            "passing": "drilled, horizontal passes",
-            "defence": "compact",
-            "passinge": "grounded passes through opposition lines",
-            "defencee": "low-block",
-            "attack": "high and wide in attack"
-        }
+        "ratings":{
+            "Forwards":69,
+            "Midfield":69,
+            "Defence":69
+        },
+        "playstyle":"Lorem ipsum dolor sit amet, consectetur adipiscing elit."
     },
     {
         "name": "Hatfield-F",
-        "playStyle": {
-            "passing": "grounded passes through opposition lines",
-            "defence": "low-block",
-            "passinge": "grounded passes through opposition lines",
-            "defencee": "low-block",
-            "attack": "build-up"
-        }
+        "ratings":{
+            "Forwards":69,
+            "Midfield":69,
+            "Defence":69
+        },
+        "playstyle":"Lorem ipsum dolor sit amet, consectetur adipiscing elit."
     },
     {
         "name": "Hatfield-G",
-        "playStyle": {
-            "passing": "grounded passes through opposition lines",
-            "defence": "low-block",
-            "passinge": "grounded passes through opposition lines",
-            "defencee": "low-block",
-            "attack": "build-up"
-        }
+        "ratings":{
+            "Forwards":69,
+            "Midfield":69,
+            "Defence":69
+        },
+        "playstyle":"Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit."
     }
 ]
