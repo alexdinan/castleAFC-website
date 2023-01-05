@@ -1,6 +1,6 @@
 
 
-"use strict";
+"use strict"
 
 
 //import express + call constructor
@@ -12,6 +12,7 @@ const app = express();
 app.use(express.static("client"));
 
 //body parser
+app.use(express.json());
 
 //get teams from json file
 let teams = require("./teams.json");
@@ -85,7 +86,23 @@ app.get("/fixtureinfo", (req,resp) => {
 
 
 
+app.post("/addteam", (req,resp) => {
+
+    //server-side validation
+    
+});
+
+
+
+
+
+
+
+
 app.listen(8090);
+
+
+
 
 
 

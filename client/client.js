@@ -160,9 +160,6 @@ async function getFixtureDetails(date, oppo){
 
 
 
-
-
-
 async function addTeam(){
     const teamForm = document.getElementById("teamForm");
     teamForm.addEventListener("submit", async function(e){
@@ -174,13 +171,50 @@ async function addTeam(){
         teamForm.classList.add("was-validated");
 
         if(valid){
-            console.log("here");
-            const jsonData = JSON.stringify(Object.fromEntries(new FormData(teamForm)));
-            console.log(jsonData);
+            const formContent = JSON.stringify(Object.fromEntries(new FormData(teamForm)));
+            console.log(formContent);
+            //send POST request to server
+            const resp = await fetch(endPointRoot + "addteam", {
+                method: "POST",
+                headers: {"Content-Type":"application/json"},
+                body: formContent
+            });
+            console.log(resp);
         }
     })
 }
 
 
 
+async function addFixture(){
+    const fixtureForm = document.getElementById("fixtureForm");
+    fixtureForm.addEventListener("submit", async function(e){
+        //single-page app => prevent form submission
+        e.preventDefault();
+        
+        //automatic browser form validation
+        const valid = fixtureForm.checkValidity();
+        fixtureForm.classList.add("was-validated");
+
+        //etc......
+
+    });
+}
+
+
+async function teamSelect(){
+    const teamSelect = document.getElementById("teamSelector");
+    teamSelect.addEventListener("click", async function(){
+        const teams = JSON.parse(await (await fetch(endPointRoot + "teams")).text());
+
+        teamSelect.innerHTML = "<option selected>...</option>";
+        for(const team of teams){
+            teamSelect.innerHTML += `<option value="${team}">${team}</option>`;
+        }
+    });
+}
+
+
 addTeam();
+addFixture();
+teamSelect();

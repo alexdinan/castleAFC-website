@@ -126,7 +126,7 @@
                         <form action="" id="teamForm" class="needs-validation" novalidate>
                             <div class="form-floating mb-4">
                                 <input type="text" id="name" name="name" class="form-control form-input" placeholder="e.g. Collingwood-A" required pattern="[A-Z].+-[A-Z]">
-                                <div class="invalid-feedback">Required fields cannot be blank</div>
+                                <div class="invalid-feedback">Must be in the form College-Team</div>
                                 <label for="name">Name: <span class="required-asterisk">*</span></label>
                                 <small class="form-text text-muted">College-Team e.g. Castle-D</small>
                             </div>
@@ -172,26 +172,29 @@
                             <hr class="line-break">
                         </div>
 
-                        <form action="">
+                        <form action="" id="fixtureForm" class="needs-validation" novalidate>
 
                             <div class="row mb-4">
                                 <div class="col">
                                     <div class="form-floating required">
-                                        <input type="text" id="date" class="form-control form-input" placeholder="dd/mm/yyyy">
+                                        <input type="text" id="date" class="form-control form-input" placeholder="dd/mm/yyyy" required pattern="[0-3][0-9]/[0-1][0-9]/[0-2][0-9]{3}">
+                                        <div class="invalid-feedback">Enter a valid date in the form DD/MM/YYY</div>
                                         <label for="date">Date <span class="required-asterisk">*</span></label>
                                         <small class="form-text text-muted">DD/MM/YYYY</small>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="form-floating required">
-                                        <input type="text" id="time" class="form-control form-input" placeholder="hh:mm">
+                                        <input type="text" id="time" class="form-control form-input" placeholder="hh:mm" required pattern="[0-2][0-9]:[0-6][0-9]">
+                                        <div class="invalid-feedback">Enter a valid time in the form HH:MM</div>
                                         <label for="time">Time <span class="required-asterisk">*</span></label>
                                         <small class="form-text text-muted">HH:MM</small>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="form-floating required">
-                                        <input type="text" id="score" class="form-control form-input" placeholder="x-y">
+                                        <input type="text" id="score" class="form-control form-input" placeholder="x-y" required pattern="[0-9]+-[0-9]+">
+                                        <div class="invalid-feedback">Enter a score in the from X-Y</div>
                                         <label for="date">Score <span class="required-asterisk">*</span></label>
                                         <small class="form-text text-muted">CAFC-OPP</small>
                                     </div>
@@ -201,20 +204,15 @@
                             <div class="row mb-4">
                                 <div class="col-7">
                                     <div class="form-floating required">
-                                        <input type="text" id="competition" class="form-control form-input" placeholder="cup/prem">
+                                        <input type="text" id="competition" class="form-control form-input" placeholder="cup/prem" required>
+                                        <div class="invalid-feedback">Required field -> cannot be left blank</div>
                                         <label for="competition">Competition <span class="required-asterisk">*</span></label>
                                     </div>
                                 </div>
                                 <div class="col-5">
-                                    <label for="teamSelect mb-5">Select Opposition <span class="required-asterisk">*</span></label>
-                                    <select name="team" id="teamSelect" class="form-control form-input">
-                                        <option selected>...</option>
-                                        <option value="Hatfield-A">Hatfield-A</option>
-                                        <option value="Hatfield-A">Hatfield-A</option>
-                                        <option value="Hatfield-A">Hatfield-A</option>
-                                        <option value="Hatfield-A">Hatfield-A</option>
-                                        <option value="Hatfield-A">Hatfield-A</option>
-                                    </select>
+                                    <label for="teamSelector mb-5">Select Opposition <span class="required-asterisk">*</span></label>
+                                    <select name="team" id="teamSelector" class="form-control form-input" required></select>
+                                    <div class="invalid-feedback">Required field - cannot be left blank</div>
                                 </div>
                             </div>
 

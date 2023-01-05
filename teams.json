@@ -5,7 +5,7 @@
         "name": "Collingwood-A",
         "ratings":{
             "Forwards":80,
-            "Midfield":69,
+            "Midfield":62,
             "Defence":49
         },
         "playstyle":"Lorem ipsum dolor sit amet, consectetur adipiscing elit."
@@ -13,7 +13,7 @@
     {
         "name": "Hatfield-A",
         "ratings":{
-            "Forwards":69,
+            "Forwards":63,
             "Midfield":71,
             "Defence":2
         },
@@ -24,34 +24,34 @@
         "ratings":{
             "Forwards":86,
             "Midfield":67,
-            "Defence":69
+            "Defence":51
         },
         "playstyle":"Lorem ipsum dolor sit amet, consectetur adipiscing elit."
     },
     {
         "name": "Hatfield-B",
         "ratings":{
-            "Forwards":69,
-            "Midfield":69,
-            "Defence":69
+            "Forwards":51,
+            "Midfield":10,
+            "Defence":23
         },
         "playstyle":"Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit."
     },
     {
         "name": "Hatfield-C",
         "ratings":{
-            "Forwards":69,
-            "Midfield":69,
-            "Defence":69
+            "Forwards":23,
+            "Midfield":12,
+            "Defence":90
         },
         "playstyle":"Lorem ipsum dolor sit amet, consectetur adipiscing elit."
     },
     {
         "name": "Collingwood-B",
         "ratings":{
-            "Forwards":69,
-            "Midfield":69,
-            "Defence":69
+            "Forwards":90,
+            "Midfield":80,
+            "Defence":70
         },
         "playstyle":"Lorem ipsum dolor sit amet, consectetur adipiscing elit."
     },
