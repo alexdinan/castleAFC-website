@@ -171,17 +171,22 @@ async function addTeam(){
         teamForm.classList.add("was-validated");
 
         if(valid){
-            const formContent = JSON.stringify(Object.fromEntries(new FormData(teamForm)));
-            console.log(formContent);
+            const formContent = Object.fromEntries(new FormData(teamForm));
             //send POST request to server
             const resp = await fetch(endPointRoot + "addteam", {
                 method: "POST",
                 headers: {"Content-Type":"application/json"},
-                body: formContent
+                body: JSON.stringify(formContent)
             });
-            console.log(resp);
+            //list teams, new team details + scroll into view
+            listTeams();
+            getTeamDetails(formContent.name);
+            document.getElementById("getAction").scrollIntoView();
+            //reset form
+            teamForm.reset();
+            teamForm.classList.remove("was-validated");
         }
-    })
+    });
 }
 
 

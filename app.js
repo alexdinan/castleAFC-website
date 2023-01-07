@@ -6,6 +6,7 @@
 //import express + call constructor
 const express = require("express");
 const app = express();
+const fs = require("fs");
 
 
 //serve static html directly to client (middleware)
@@ -87,12 +88,20 @@ app.get("/fixtureinfo", (req,resp) => {
 
 
 app.post("/addteam", (req,resp) => {
-
-    //server-side validation
     
+    //server-side validation
+
+    // if valid - create team object from request body
+    const body = req.body;
+    const newTeam = {"name": body.name, 
+                    "ratings": {"Forwards":body.Forwards,"Midfield":body.Midfield,"Defence":body.Defence},
+                    "playstyle": body.playstyle
+                };
+    teams.push(newTeam);
+    //persistent => append to json file (synchronous)
+    fs.writeFileSync("./teams.json", JSON.stringify(teams));
+    resp.status(200).json(teams);
 });
-
-
 
 
 
