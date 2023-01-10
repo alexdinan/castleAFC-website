@@ -177,7 +177,7 @@
                             <div class="row mb-4">
                                 <div class="col">
                                     <div class="form-floating required">
-                                        <input type="text" id="date" class="form-control form-input" placeholder="dd/mm/yyyy" required pattern="[0-3][0-9]/[0-1][0-9]/[0-2][0-9]{3}">
+                                        <input type="text" id="date" name="date" class="form-control form-input" placeholder="dd/mm/yyyy" required pattern="[0-3][0-9]/[0-1][0-9]/[0-2][0-9]{3}">
                                         <div class="invalid-feedback">Enter a valid date in the form DD/MM/YYY</div>
                                         <label for="date">Date <span class="required-asterisk">*</span></label>
                                         <small class="form-text text-muted">DD/MM/YYYY</small>
@@ -185,7 +185,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="form-floating required">
-                                        <input type="text" id="time" class="form-control form-input" placeholder="hh:mm" required pattern="[0-2][0-9]:[0-6][0-9]">
+                                        <input type="text" id="time" name="time" class="form-control form-input" placeholder="hh:mm" required pattern="[0-2][0-9]:[0-6][0-9]">
                                         <div class="invalid-feedback">Enter a valid time in the form HH:MM</div>
                                         <label for="time">Time <span class="required-asterisk">*</span></label>
                                         <small class="form-text text-muted">HH:MM</small>
@@ -193,7 +193,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="form-floating required">
-                                        <input type="text" id="score" class="form-control form-input" placeholder="x-y" required pattern="[0-9]+-[0-9]+">
+                                        <input type="text" id="score" name="score" class="form-control form-input" placeholder="x-y" required pattern="[0-9]+-[0-9]+">
                                         <div class="invalid-feedback">Enter a score in the from X-Y</div>
                                         <label for="date">Score <span class="required-asterisk">*</span></label>
                                         <small class="form-text text-muted">CAFC-OPP</small>
@@ -204,20 +204,20 @@
                             <div class="row mb-4">
                                 <div class="col-7">
                                     <div class="form-floating required">
-                                        <input type="text" id="competition" class="form-control form-input" placeholder="cup/prem" required>
+                                        <input type="text" id="competition" name="competition" class="form-control form-input" placeholder="cup/prem" required>
                                         <div class="invalid-feedback">Required field -> cannot be left blank</div>
                                         <label for="competition">Competition <span class="required-asterisk">*</span></label>
                                     </div>
                                 </div>
                                 <div class="col-5">
                                     <label for="teamSelector mb-5">Select Opposition <span class="required-asterisk">*</span></label>
-                                    <select name="team" id="teamSelector" class="form-control form-input" required></select>
+                                    <select name="opposition" id="teamSelector" class="form-control form-input" required></select>
                                     <div class="invalid-feedback">Required field - cannot be left blank</div>
                                 </div>
                             </div>
 
                             <div class="form-floating mb-4">
-                                <textarea id="report" class="form-control form-input" placeholder="n/a"></textarea>
+                                <textarea id="report" name="report" class="form-control form-input" placeholder="n/a"></textarea>
                                 <label for="playStyle">Match Report:</label>
                             </div>
                             <button type="submit" class="btn btn-dark">Submit</button>

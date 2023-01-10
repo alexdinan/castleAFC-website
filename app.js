@@ -96,7 +96,7 @@ app.post("/addteam", (req,resp) => {
     const newTeam = {"name": body.name, 
                     "ratings": {"Forwards":body.Forwards,"Midfield":body.Midfield,"Defence":body.Defence},
                     "playstyle": body.playstyle
-                };
+    };
     teams.push(newTeam);
     //persistent => append to json file (synchronous)
     fs.writeFileSync("./teams.json", JSON.stringify(teams));
@@ -105,6 +105,27 @@ app.post("/addteam", (req,resp) => {
 
 
 
+
+app.post("/addfixture", (req,resp) => {
+
+    //server-side validation
+
+    //if valid - create fixture object
+    const body = req.body;
+
+    const newFixture = {"date": body.date,
+                        "time": body.time,
+                        "competition": body.competition,
+                        "opposition": body.opposition,
+                        "goalsFor": body.score.split("-")[0],
+                        "goalsAgainst": body.score.split("-")[1],
+                        "report": body.report
+    };
+    fixtures.push(newFixture);
+    //write to json file
+    fs.writeFileSync("./fixtures.json", JSON.stringify(fixtures));
+    resp.status(200).json(fixtures);
+});
 
 
 

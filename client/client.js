@@ -201,10 +201,23 @@ async function addFixture(){
         const valid = fixtureForm.checkValidity();
         fixtureForm.classList.add("was-validated");
 
-        //etc......
-
+        if(valid){
+            const formContent = Object.fromEntries(new FormData(fixtureForm))
+            console.log(formContent);
+            //send POST request to server
+            const resp = await fetch(endPointRoot + "addfixture", {
+                method: "POST",
+                headers: {"content-type":"application/json"},
+                body: JSON.stringify(formContent)
+            });
+            //reset form
+            fixtureForm.reset();
+            fixtureForm.classList.remove("was-validated");  
+        }
     });
 }
+
+
 
 
 async function teamSelect(){
