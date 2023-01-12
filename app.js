@@ -20,6 +20,19 @@ let teams = require("./teams.json");
 let fixtures = require("./fixtures.json");
 
 
+const validTeamFormat = {"name": {"regex": /[A-Z].*-[A-Z]/, "msg":"College name is invalid - must be of form Collegename-X"},
+                        "Forwards": {"regex": /^\d{1,2}$/, "msg":"Rating must be an integer 0-100"},
+                        "Midfield": {"regex": /^\d{1,2}$/, "msg":"Rating must be an integer 0-100"},
+                        "Defence": {"regex": /^\d{1,2}$/, "msg":"Rating must be an integer 0-100"}
+};
+
+const validFixtureFormat = {"date": {"regex": /^\d{2}\/\d{2}\/\d{4}$/, "msg":"Date must be in form DD/MM/YYYY"},
+                            "time": {"regex": /^\d{2}:\d{2}/, "msg":"Time must be in form HH:MM"},
+                            "competition": {"regex": /.+/, "msg":"Competition entered is invalid"},
+                            "goalsFor": {"regex": /\d/, "msg":"Enter a positive integer"},
+                            "goalsAgainst": {"regex": /\d/, "msg":"enter a positive integer"},
+};
+    
 
 
 //get request - returns list of team names
@@ -90,42 +103,61 @@ app.get("/fixtureinfo", (req,resp) => {
 app.post("/addteam", (req,resp) => {
     
     //server-side validation
-
-    // if valid - create team object from request body
     const body = req.body;
-    const newTeam = {"name": body.name, 
-                    "ratings": {"Forwards":body.Forwards,"Midfield":body.Midfield,"Defence":body.Defence},
-                    "playstyle": body.playstyle
-    };
-    teams.push(newTeam);
-    //persistent => append to json file (synchronous)
-    fs.writeFileSync("./teams.json", JSON.stringify(teams));
-    resp.status(200).json(teams);
-});
+    const errors = validatePostData(validTeamFormat, body);
+    if(errors === []){
+        // if valid - create team object from request body
+        const newTeam = {"name": body.name, 
+                        "ratings": {"Forwards":body.Forwards,"Midfield":body.Midfield,"Defence":body.Defence},
+                        "playstyle": body.playstyle};
 
+        teams.push(newTeam);
+        //persistent => append to json file (synchronous)
+        fs.writeFileSync("./teams.json", JSON.stringify(teams));
+        resp.status(200).json(teams);
+    }else{
+        //bad request - send back errors
+        resp.status(400).json(errors);
+    }
+});
 
 
 
 app.post("/addfixture", (req,resp) => {
 
     //server-side validation
-
-    //if valid - create fixture object
     const body = req.body;
-
-    const newFixture = {"date": body.date,
-                        "time": body.time,
-                        "competition": body.competition,
-                        "opposition": body.opposition,
-                        "goalsFor": body.score.split("-")[0],
-                        "goalsAgainst": body.score.split("-")[1],
-                        "report": body.report
-    };
-    fixtures.push(newFixture);
-    //write to json file
-    fs.writeFileSync("./fixtures.json", JSON.stringify(fixtures));
-    resp.status(200).json(fixtures);
+    const errors = validatePostData(validFixtureFormat, body);
+    if(errors === []){
+        //if valid - create fixture object
+        const newFixture = {"date": body.date, "time": body.time, "competition": body.competition,
+                            "opposition": body.opposition,
+                            "goalsFor": body.score.split("-")[0], "goalsAgainst": body.score.split("-")[1],
+                            "report": body.report};
+    
+        fixtures.push(newFixture);
+        //write to json file
+        fs.writeFileSync("./fixtures.json", JSON.stringify(fixtures));
+        resp.status(200).json(fixtures);
+    }else{
+        //bad request - send back errors
+        resp.status(400).json(errors);
+    }
 });
+
+
+
+
+function validatePostData(format, reqBody){
+    let errors = [];
+    for(const [arg,formatObj] of Object.entries(format)){
+        if(!formatObj.regex.test(reqBody[arg])){
+            errors.push({[arg] : formatObj.msg});
+        }
+    }
+    return errors
+}
+
 
 
 

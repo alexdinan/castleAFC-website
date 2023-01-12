@@ -172,6 +172,7 @@ async function addTeam(){
 
         if(valid){
             const formContent = Object.fromEntries(new FormData(teamForm));
+        
             //send POST request to server
             const resp = await fetch(endPointRoot + "addteam", {
                 method: "POST",
