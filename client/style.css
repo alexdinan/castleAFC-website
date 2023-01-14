@@ -1,35 +1,4 @@
 
-
-#getAction hr {
-    width: 90%;
-    border: 1px dashed rgba(255,0,0);
-    margin: auto;
-    margin-bottom: 2rem;
-}
-
-
-#formSectionContainer{
-    width: 90%;
-    margin-top: 10%;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#formSectionContainer hr{
-    width: 80%;
-    border: 1px dashed red;
-    margin-bottom: 2rem;
-}
-
-
-#pitchPhoto{
-    width: 90%;
-}
-
-
-/* actual stuff here! */
-
-
 .wrapper{
     padding-left: 5%;
     padding-right: 5%;
@@ -42,11 +11,6 @@
     margin-left:auto;
 }
 
-.imageContainer{
-    display: flex;
-    justify-content: center;
-    align-items: center; 
-}
 
 .relative{
     position: relative;
@@ -59,6 +23,7 @@
     text-align: center;
     width: 100%;
 }
+
 
 .bg-muted{
     background-color: rgb(244,244,244,0.5);
@@ -80,23 +45,10 @@
 }
 
 
-.card-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-
 .colContainer{
     width: 80%;
     margin-left:auto;
     margin-right:auto;
-}
-
-.team-card{
-    width: 65%;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 
@@ -106,17 +58,12 @@
     color:black;
 }
 
-.line-break{
-    width: 100%;
-    border: 1px dashed red;
-}
 
 .form-input{
     border: none;
     border-radius: 0px;
     background: #F2F2F2;
 }
-
 
 .required-asterisk{
     color: red;

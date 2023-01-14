@@ -26,17 +26,20 @@
 
             <div class="collapse navbar-collapse" id="navContent">
                 <ul class="navbar-nav ms-auto" id="navItems">
-                    <li class="nav-item px-2">
-                        <a class="nav-link" href="#">Home</a>
+                    <li class="nav-item px-3">
+                        <a class="nav-link lead" href="#">Home</a>
                     </li>
-                    <li class="nav-item px-2">
+                    <li class="nav-item px-1">
+                        <a class="nav-link" href="#aboutSection">About</a>
+                    </li>
+                    <li class="nav-item px-1">
+                        <a class="nav-link" href="#teamSection">View Teams</a>
+                    </li>
+                    <li class="nav-item px-1">
+                        <a class="nav-link" href="#fixtureTableSection">View Fixtures</a>
+                    </li>
+                    <li class="nav-item px-1">
                         <a class="nav-link" href="#teamForm">Add Data</a>
-                    </li>
-                    <li class="nav-item px-2">
-                        <a class="nav-link" href="#getAction">Actions</a>
-                    </li>
-                    <li class="nav-item px-2">
-                        <a class="nav-link" href="#footer">About</a>
                     </li>
                 </ul>
             </div>
@@ -50,33 +53,31 @@
         </div>
 
 
-        <!-- Actions section -->
-        <div class="container-fluid pt-5 bg-grey2" id="getAction">
-            <h1 class="display-1 text-center mb-4">Actions</h1>
-            <hr>
-            <div class="row pb-4">
-                <div class="col-xs-6 col-sm-4 text-center p-2">
-                    <a href="#fixtureTableSection"><span><button type="button" class="btn btn-dark" id="getFixtures">Get Fixture List</button></span></a>
-                    <p class="lead">Lists all premier fixture details</p>
+
+
+        <!-- About the club section -->
+        <div class="container-fluid wrapper pt-5 bg-grey2" id="aboutSection">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h5 class="display-3 mb-3 lead">About the club...</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt urna quis pretium scelerisque. In hendrerit ante id arcu sodales aliquam. Nulla venenatis volutpat lorem, quis porttitor risus sodales ut. Etiam lorem ipsum, euismod sit amet justo et, faucibus ultrices neque. Duis gravida neque eget risus bibendum, sed aliquet sapien rutrum. Nam volutpat ut erat sit amet maximus. Ut urna nulla, bibendum vitae sapien a, lacinia ullamcorper turpis. Proin viverra et purus at pretium.</p>
+                    <p>Sed consectetur vulputate purus, at mollis enim vehicula ut. Vivamus malesuada tincidunt blandit. Nullam eget tellus placerat, hendrerit enim sit amet, dapibus ante. Suspendisse pharetra magna vulputate, tincidunt nulla in, porta purus. Ut eu posuere neque. Cras a tellus risus. Quisque rhoncus quam eget ante egestas dignissim. Morbi eu elit semper, imperdiet nibh non, interdum augue.</p>
+                    <p>Donec in leo iaculis, faucibus diam ut, volutpat dui. Vestibulum condimentum tortor ac sollicitudin ornare. Aenean vestibulum sagittis metus. Sed sodales elit nunc. Fusce sagittis semper efficitur. In sollicitudin risus urna, non dapibus turpis venenatis et. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque consectetur elementum feugiat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt urna quis pretium scelerisque.</p>     
                 </div>
-                <div class="col-xs-6 col-sm-4 text-center p-2">
-                    <button type="button" class="btn btn-dark" id="getTeams">Get Team List</button>
-                    <p class="lead">Lists all teams in the premier division</p>
-                </div>
-                <div class="col-xs-6 col-sm-4 text-center p-2">
-                    <button type="button" class="btn btn-dark" id="getPlayers">Get Player List</button>
-                    <p class="lead">Shows all Castle A player details</p>
+                <div class="col-lg-6 my-auto">
+                    <img class="img-fluid mb-5" src="images/sportscenter.png" alt="durham university Graham sports center">
+                    <img class="img-fluid d-none d-lg-block d-xl-none p-2" src="images/pitch.png" alt="A football pitch">
                 </div>
             </div>
         </div>
         
         
         <!-- TEAM SECTION (modified by client.js)-->
-        <div id="teamSection" class="container-fluid wrapper">
+        <div id="teamSection" class="container-fluid wrapper pt-5 pb-5">
             <div class="row">
                 <div class="col-md-4">
-                    <h5 id="teamHeading" class="display-4 mb-1"></h5>
-                    <p id="teamSmallText" class="text-secondary mb-3"></p>
+                    <h5 id="teamHeading" class="display-4 mb-1">Teams:</h5>
+                    <p id="teamSmallText" class="text-secondary mb-3">click items below to load team details!</p>
                     <ol id="teamNameList" class="list-group list-group-numbered list-group-flush"></ol>
                 </div>
                 
@@ -93,9 +94,9 @@
 
 
         <!-- Fixture List section! (manipulated by client.js)-->
-        <div id="fixtureTableSection" class="container-fluid wrapper mb-5">
-            <div class="row mb-5">
-                <h5 id="fixtureHeading" class="display-4 mb-5"></h5>
+        <div id="fixtureTableSection" class="container-fluid wrapper pt-5 pb-4 bg-grey2">
+            <div class="row mb-3">
+                <h5 id="fixtureHeading" class="display-4 mb-5">Fixtures:</h5>
 
                 <table class="table table-hover table-bordered table-striped">
                     <thead id="fixtureThead" class="table-dark"></thead>
@@ -253,13 +254,13 @@
                         <img src="images/githublogog.png" alt="github icon" style="width:40%;height:auto;">
                     </a>
                     <a href="#">
-                        <img src="images/linkedin.png" alt="github icon" style="width:23%;height:auto;">
+                        <img src="images/linkedin.png" alt="linkedin icon" style="width:23%;height:auto;">
                     </a>
                     <a href="#">
-                        <img src="images/facebook.png" alt="github icon" style="width:22%;height:auto;">
+                        <img src="images/facebook.png" alt="facebook icon" style="width:22%;height:auto;">
                     </a>
                     <a href="#">
-                        <img src="images/twitter.png" alt="github icon" style="width:60%;height:auto;">
+                        <img src="images/twitter.png" alt="twitter icon" style="width:60%;height:auto;">
                     </a>
                 </div>
             </div>

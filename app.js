@@ -1,7 +1,5 @@
 
 
-"use strict"
-
 
 //import express + call constructor
 const express = require("express");
@@ -20,17 +18,16 @@ let teams = require("./teams.json");
 let fixtures = require("./fixtures.json");
 
 
-const validTeamFormat = {"name": {"regex": /[A-Z].*-[A-Z]/, "msg":"College name is invalid - must be of form Collegename-X"},
+const validTeamFormat = {"name": {"regex": /^[A-Z].*-[A-Z]$/, "msg":"College name is invalid - must be of form Collegename-X"},
                         "Forwards": {"regex": /^\d{1,2}$/, "msg":"Rating must be an integer 0-100"},
                         "Midfield": {"regex": /^\d{1,2}$/, "msg":"Rating must be an integer 0-100"},
                         "Defence": {"regex": /^\d{1,2}$/, "msg":"Rating must be an integer 0-100"}
 };
 
 const validFixtureFormat = {"date": {"regex": /^\d{2}\/\d{2}\/\d{4}$/, "msg":"Date must be in form DD/MM/YYYY"},
-                            "time": {"regex": /^\d{2}:\d{2}/, "msg":"Time must be in form HH:MM"},
+                            "time": {"regex": /^\d{2}:\d{2}$/, "msg":"Time must be in form HH:MM"},
                             "competition": {"regex": /.+/, "msg":"Competition entered is invalid"},
-                            "goalsFor": {"regex": /\d/, "msg":"Enter a positive integer"},
-                            "goalsAgainst": {"regex": /\d/, "msg":"enter a positive integer"},
+                            "score": {"regex": /^\d+-\d+$/, "msg": "Score must be in form x-y"}
 };
     
 
@@ -105,7 +102,7 @@ app.post("/addteam", (req,resp) => {
     //server-side validation
     const body = req.body;
     const errors = validatePostData(validTeamFormat, body);
-    if(errors === []){
+    if(errors.length === 0){
         // if valid - create team object from request body
         const newTeam = {"name": body.name, 
                         "ratings": {"Forwards":body.Forwards,"Midfield":body.Midfield,"Defence":body.Defence},
@@ -128,7 +125,8 @@ app.post("/addfixture", (req,resp) => {
     //server-side validation
     const body = req.body;
     const errors = validatePostData(validFixtureFormat, body);
-    if(errors === []){
+
+    if(errors.length === 0){
         //if valid - create fixture object
         const newFixture = {"date": body.date, "time": body.time, "competition": body.competition,
                             "opposition": body.opposition,
@@ -150,7 +148,9 @@ app.post("/addfixture", (req,resp) => {
 
 function validatePostData(format, reqBody){
     let errors = [];
+    //compare body data to regex formats defined in format
     for(const [arg,formatObj] of Object.entries(format)){
+        //if no match - add argument and associated error message
         if(!formatObj.regex.test(reqBody[arg])){
             errors.push({[arg] : formatObj.msg});
         }
@@ -159,9 +159,7 @@ function validatePostData(format, reqBody){
 }
 
 
-
-
-app.listen(8090);
+module.exports = app;
 
 
 

@@ -1,15 +1,6 @@
 
 
-"use strict";
-
 const endPointRoot = "http://127.0.0.1:8090/";
-
-//add event listener to actions buttons
-const getTeamsBtn = document.getElementById("getTeams");
-getTeamsBtn.addEventListener('click' , listTeams);
-
-const getFixturesBtn = document.getElementById("getFixtures");
-getFixturesBtn.addEventListener('click', listFixtures);
 
 
 
@@ -24,15 +15,13 @@ async function listTeams(){
             teamList += `<li class="team-list-item list-group-item"><span class="text-dark">${team}</span></li>`;
         }
         //add to DOM
-        document.getElementById("teamSection").className += " pt-5 pb-5";
-        document.getElementById("teamHeading").innerHTML = "Teams:";
-        document.getElementById("teamSmallText").innerHTML = "click items below to load team details!";
         document.getElementById("teamNameList").innerHTML = teamList;
        
         //add event listeners
         for(const li of document.querySelectorAll(".team-list-item")){
             li.addEventListener("click", (e) => getTeamDetails(e.target.textContent));
         }
+
     }catch(error){
         //add 404 handling
         alert(error);
@@ -47,7 +36,7 @@ async function getTeamDetails(teamName){
         const details = JSON.parse(await (await fetch(endPointRoot + `teaminfo?name=${teamName}`)).text());
 
 
-        //add team name to title box
+        //add team name to title box + add padding
         document.getElementById("teamNameBox").innerHTML = `<h5 class="text-center display-5 py-3">${details.name}</h5>`;
 
         //add ratings to Dom
@@ -61,7 +50,7 @@ async function getTeamDetails(teamName){
         document.getElementById("styleCont").innerHTML = `<h5 class="px-3">Playstyle Description:</h5><p class="px-3 py-2">${details.playstyle}</p>`;
 
         //add appropriate border
-        document.querySelector(".colContainer").className += " border";
+        document.querySelector(".colContainer").classList.add("border");
 
     }catch(error){
         alert(error);
@@ -75,11 +64,6 @@ async function listFixtures(){
         //send get request to server and parse response
         const fixtureList = JSON.parse(await (await fetch(endPointRoot + "fixtures")).text());
 
-        //add title and padding etc...
-        document.getElementById("fixtureTableSection").className += " pt-5 pb-5 bg-grey2";
-        document.getElementById("fixtureHeading").innerHTML = "Fixtures:";
-
-        
         //create thead (table heading row)
         let thead = "<tr>";
         for(const key of Object.keys(fixtureList[0])){
@@ -148,12 +132,13 @@ async function getFixtureDetails(date, oppo){
     //create match report row
     let reportRow = document.getElementById("reportRow");
     reportRow.innerHTML = f.report;
-    reportRow.className += " bg-white";
+    reportRow.classList.add("bg-white");
 
     //add event listener for opposition team button!
     scoreRow.querySelector(".oppo").addEventListener("click", (e) => {
         getTeamDetails(e.target.textContent);
         listTeams();
+        document.getElementById("teamSection").scrollIntoView();
     });
 }
 
@@ -182,7 +167,7 @@ async function addTeam(){
             //list teams, new team details + scroll into view
             listTeams();
             getTeamDetails(formContent.name);
-            document.getElementById("getAction").scrollIntoView();
+            document.getElementById("aboutSection").scrollIntoView();
             //reset form
             teamForm.reset();
             teamForm.classList.remove("was-validated");
@@ -204,20 +189,22 @@ async function addFixture(){
 
         if(valid){
             const formContent = Object.fromEntries(new FormData(fixtureForm))
-            console.log(formContent);
             //send POST request to server
             const resp = await fetch(endPointRoot + "addfixture", {
                 method: "POST",
                 headers: {"content-type":"application/json"},
                 body: JSON.stringify(formContent)
             });
+            //list fixtures, new fixture details + scroll into view
+            listFixtures();
+            getFixtureDetails(formContent.date , formContent.opposition)
+            document.getElementById("fixtureTableSection").scrollIntoView();
             //reset form
             fixtureForm.reset();
             fixtureForm.classList.remove("was-validated");  
         }
     });
 }
-
 
 
 
@@ -234,6 +221,12 @@ async function teamSelect(){
 }
 
 
-addTeam();
-addFixture();
-teamSelect();
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    listTeams();
+    listFixtures();
+    addTeam();
+    addFixture();
+    teamSelect();
+});
