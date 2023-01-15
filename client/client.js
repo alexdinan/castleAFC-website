@@ -24,7 +24,7 @@ async function listTeams(){
 
     }catch(error){
         //add 404 handling
-        alert(error);
+        errorHandler(error);
     }
 }
 
@@ -53,7 +53,7 @@ async function getTeamDetails(teamName){
         document.querySelector(".colContainer").classList.add("border");
 
     }catch(error){
-        alert(error);
+        errorHandler(error);
     }
 }
 
@@ -95,7 +95,7 @@ async function listFixtures(){
         }
 
     }catch(error){
-        alert(error);
+        errorHandler(error);
     }
 }
 
@@ -104,42 +104,46 @@ async function listFixtures(){
 
 
 async function getFixtureDetails(date, oppo){
-    //send get request + parse response - fixture details
-    const f = JSON.parse(await (await fetch(`${endPointRoot}fixtureinfo?date=${date}&opposition=${oppo}`)).text());
+    try{
+        //send get request + parse response - fixture details
+        const f = JSON.parse(await (await fetch(`${endPointRoot}fixtureinfo?date=${date}&opposition=${oppo}`)).text());
 
-    //create top row with date time and competition
-    let timeRow = document.getElementById("timeRow");
-    timeRow.innerHTML = `<div class="p-3 col">${f.date}</div><div class="p-3 col">${f.competition}</div><div class="p-3 col">${f.time}</div>`;
-   
+        //create top row with date time and competition
+        let timeRow = document.getElementById("timeRow");
+        timeRow.innerHTML = `<div class="p-3 col">${f.date}</div><div class="p-3 col">${f.competition}</div><div class="p-3 col">${f.time}</div>`;
+    
 
-    //create middle row with teams and score
-    let scoreRow = document.getElementById("scoreRow");
-    scoreRow.className += " bg-white";
-    //add color to score - depending on w/d/l
-    let color = "";
-    if (f.goalsFor > f.goalsAgainst){
-        color="text-success";
-    }else if(f.goalsFor === f.goalsAgainst){
-        color="text-warning";
-    }else{
-        color="text-danger";
+        //create middle row with teams and score
+        let scoreRow = document.getElementById("scoreRow");
+        scoreRow.className += " bg-white";
+        //add color to score - depending on w/d/l
+        let color = "";
+        if (f.goalsFor > f.goalsAgainst){
+            color="text-success";
+        }else if(f.goalsFor === f.goalsAgainst){
+            color="text-warning";
+        }else{
+            color="text-danger";
+        }
+
+        scoreRow.innerHTML = `<div class="p-2 col display-6 my-auto">Castle A</div>
+                            <div class="score p-2 col display-4 ${color}">${f.goalsFor} - ${f.goalsAgainst}</div>
+                            <a href="#getAction" class="oppo p-2 col display-6 my-auto">${f.opposition}</a>`;
+
+        //create match report row
+        let reportRow = document.getElementById("reportRow");
+        reportRow.innerHTML = f.report;
+        reportRow.classList.add("bg-white");
+
+        //add event listener for opposition team button!
+        scoreRow.querySelector(".oppo").addEventListener("click", (e) => {
+            getTeamDetails(e.target.textContent);
+            listTeams();
+            document.getElementById("teamSection").scrollIntoView();
+        });
+    }catch(error){
+        errorHandler(error);
     }
-
-    scoreRow.innerHTML = `<div class="p-2 col display-6 my-auto">Castle A</div>
-                        <div class="score p-2 col display-4 ${color}">${f.goalsFor} - ${f.goalsAgainst}</div>
-                        <a href="#getAction" class="oppo p-2 col display-6 my-auto">${f.opposition}</a>`;
-
-    //create match report row
-    let reportRow = document.getElementById("reportRow");
-    reportRow.innerHTML = f.report;
-    reportRow.classList.add("bg-white");
-
-    //add event listener for opposition team button!
-    scoreRow.querySelector(".oppo").addEventListener("click", (e) => {
-        getTeamDetails(e.target.textContent);
-        listTeams();
-        document.getElementById("teamSection").scrollIntoView();
-    });
 }
 
 
@@ -148,29 +152,33 @@ async function getFixtureDetails(date, oppo){
 async function addTeam(){
     const teamForm = document.getElementById("teamForm");
     teamForm.addEventListener("submit", async function(e){
-        //single-page app => prevent form submission
-        e.preventDefault();
-        
-        //automatic browser form validation
-        const valid = teamForm.checkValidity();
-        teamForm.classList.add("was-validated");
+        try{
+            //single-page app => prevent form submission
+            e.preventDefault();
+            
+            //automatic browser form validation
+            const valid = teamForm.checkValidity();
+            teamForm.classList.add("was-validated");
 
-        if(valid){
-            const formContent = Object.fromEntries(new FormData(teamForm));
-        
-            //send POST request to server
-            const resp = await fetch(endPointRoot + "addteam", {
-                method: "POST",
-                headers: {"Content-Type":"application/json"},
-                body: JSON.stringify(formContent)
-            });
-            //list teams, new team details + scroll into view
-            listTeams();
-            getTeamDetails(formContent.name);
-            document.getElementById("aboutSection").scrollIntoView();
-            //reset form
-            teamForm.reset();
-            teamForm.classList.remove("was-validated");
+            if(valid){
+                const formContent = Object.fromEntries(new FormData(teamForm));
+            
+                //send POST request to server
+                const resp = await fetch(endPointRoot + "addteam", {
+                    method: "POST",
+                    headers: {"Content-Type":"application/json"},
+                    body: JSON.stringify(formContent)
+                });
+                //list teams, new team details + scroll into view
+                listTeams();
+                getTeamDetails(formContent.name);
+                document.getElementById("aboutSection").scrollIntoView();
+                //reset form
+                teamForm.reset();
+                teamForm.classList.remove("was-validated");
+            }
+        }catch(error){
+            errorHandler(error)
         }
     });
 }
@@ -180,28 +188,32 @@ async function addTeam(){
 async function addFixture(){
     const fixtureForm = document.getElementById("fixtureForm");
     fixtureForm.addEventListener("submit", async function(e){
-        //single-page app => prevent form submission
-        e.preventDefault();
-        
-        //automatic browser form validation
-        const valid = fixtureForm.checkValidity();
-        fixtureForm.classList.add("was-validated");
+        try{
+            //single-page app => prevent form submission
+            e.preventDefault();
+            
+            //automatic browser form validation
+            const valid = fixtureForm.checkValidity();
+            fixtureForm.classList.add("was-validated");
 
-        if(valid){
-            const formContent = Object.fromEntries(new FormData(fixtureForm))
-            //send POST request to server
-            const resp = await fetch(endPointRoot + "addfixture", {
-                method: "POST",
-                headers: {"content-type":"application/json"},
-                body: JSON.stringify(formContent)
-            });
-            //list fixtures, new fixture details + scroll into view
-            listFixtures();
-            getFixtureDetails(formContent.date , formContent.opposition)
-            document.getElementById("fixtureTableSection").scrollIntoView();
-            //reset form
-            fixtureForm.reset();
-            fixtureForm.classList.remove("was-validated");  
+            if(valid){
+                const formContent = Object.fromEntries(new FormData(fixtureForm))
+                //send POST request to server
+                const resp = await fetch(endPointRoot + "addfixture", {
+                    method: "POST",
+                    headers: {"content-type":"application/json"},
+                    body: JSON.stringify(formContent)
+                });
+                //list fixtures, new fixture details + scroll into view
+                listFixtures();
+                getFixtureDetails(formContent.date , formContent.opposition)
+                document.getElementById("fixtureTableSection").scrollIntoView();
+                //reset form
+                fixtureForm.reset();
+                fixtureForm.classList.remove("was-validated");  
+            }
+        }catch(error){
+            errorHandler(error);
         }
     });
 }
@@ -211,14 +223,34 @@ async function addFixture(){
 async function teamSelect(){
     const teamSelect = document.getElementById("teamSelector");
     teamSelect.addEventListener("click", async function(){
-        const teams = JSON.parse(await (await fetch(endPointRoot + "teams")).text());
+        try{
+            const teams = JSON.parse(await (await fetch(endPointRoot + "teams")).text());
 
-        teamSelect.innerHTML = "<option selected>...</option>";
-        for(const team of teams){
-            teamSelect.innerHTML += `<option value="${team}">${team}</option>`;
+            teamSelect.innerHTML = "<option selected>...</option>";
+            for(const team of teams){
+                teamSelect.innerHTML += `<option value="${team}">${team}</option>`;
+            }
+        }catch(error){
+            errorHandler(error);
         }
     });
 }
+
+
+
+//function for handling errors e.g. when server goes down
+function errorHandler(error){
+    document.getElementById("errorDescription").innerHTML = error;
+    //make error section visible
+    const errorSection = document.getElementById("errorSection");
+    errorSection.classList.remove("d-none");
+    errorSection.scrollIntoView();
+    //add close functionality
+    document.getElementById("errorCloseBtn").addEventListener("click", () =>{
+        document.getElementById("errorSection").classList.add("d-none");
+    });
+}
+
 
 
 

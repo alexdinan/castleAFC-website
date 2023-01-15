@@ -26,7 +26,7 @@
 
             <div class="collapse navbar-collapse" id="navContent">
                 <ul class="navbar-nav ms-auto" id="navItems">
-                    <li class="nav-item px-3">
+                    <li class="nav-item px-1">
                         <a class="nav-link lead" href="#">Home</a>
                     </li>
                     <li class="nav-item px-1">
@@ -53,6 +53,21 @@
         </div>
 
 
+         <!-- Error section-->
+         <div class="container-fluid error-section wrapper-lg bg-grey1 py-5 d-none" id="errorSection">
+            <h2 class="display-1 text-muted text-uppercase lead fw-bolder text-lg">Oops.....</h2>
+            <h3 class="display-2 lead fw-bold text-lg text-end mb-5">An error occoured!</h3>
+
+            <div class="text-center mx-auto py-3 mt-5">
+                <h5 class="display-4 text-danger lead">Description:</h5>
+                <h5 class=" mb-5" id="errorDescription"></h5>
+                
+                <h5 class="display-4 lead text-danger">Cause:</h5>
+                <h5 class="mb-5" id="causeDescription">It is likely the server is temporarily down! Sorry.</h5>
+
+                <button id="errorCloseBtn" class="btn btn-lg btn-dark">Close</button>
+            </div>
+        </div>
 
 
         <!-- About the club section -->
@@ -229,11 +244,8 @@
         </div>
 
 
-
-
         <!-- Footer Section -->
-        <br>
-        <footer id="footer" class="bg-dark text-white pt-5 pb-4">
+        <footer id="footer" class="bg-dark text-white mt-4 pt-5 pb-4">
             <div class="container-fluid wrapper-lg">
                 <div class="row">
                     <div class="col" style="margin-right:2%;">

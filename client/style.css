@@ -72,3 +72,12 @@
 .btn{
     border-radius: 0px;
 }
+
+
+
+.text-xl{
+    font-size: 1000%;
+}
+.text-lg{
+    font-size: 600%;
+}
