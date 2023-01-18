@@ -19,9 +19,9 @@ let fixtures = require("./fixtures.json");
 
 
 const validTeamFormat = {"name": {"regex": /^[A-Z].*-[A-Z]$/, "msg":"College name is invalid - must be of form Collegename-X"},
-                        "Forwards": {"regex": /^\d{1,2}$/, "msg":"Rating must be an integer 0-100"},
-                        "Midfield": {"regex": /^\d{1,2}$/, "msg":"Rating must be an integer 0-100"},
-                        "Defence": {"regex": /^\d{1,2}$/, "msg":"Rating must be an integer 0-100"}
+                        "forwards": {"regex": /^\d{1,2}$/, "msg":"Rating must be an integer 0-100"},
+                        "midfield": {"regex": /^\d{1,2}$/, "msg":"Rating must be an integer 0-100"},
+                        "defence": {"regex": /^\d{1,2}$/, "msg":"Rating must be an integer 0-100"}
 };
 
 const validFixtureFormat = {"date": {"regex": /^\d{2}\/\d{2}\/\d{4}$/, "msg":"Date must be in form DD/MM/YYYY"},
@@ -65,6 +65,10 @@ app.get("/teaminfo", (req,resp) => {
 
 
 //returns list of objects with date,opposition name for each fixture - REFER TO STACK OVERFLOW PAGE!!!!!!!!!!!!!!!!
+//REFER TO STACK OVERFLOW PAGE!!!!!!!!!!!!!!!!
+//REFER TO STACK OVERFLOW PAGE!!!!!!!!!!!!!!!!
+//REFER TO STACK OVERFLOW PAGE!!!!!!!!!!!!!!!!
+//REFER TO STACK OVERFLOW PAGE!!!!!!!!!!!!!!!!
 app.get("/fixtures", (req,resp) => {
     let fixtureList = [];
 
@@ -89,6 +93,7 @@ app.get("/fixtureinfo", (req,resp) => {
     for(const f of fixtures){
         if( f.date === date & f.opposition === oppo){
             resp.status(200).json(f);
+            return
         }
     }
     //no match found => BAD request
@@ -105,7 +110,7 @@ app.post("/addteam", (req,resp) => {
     if(errors.length === 0){
         // if valid - create team object from request body
         const newTeam = {"name": body.name, 
-                        "ratings": {"Forwards":body.Forwards,"Midfield":body.Midfield,"Defence":body.Defence},
+                        "ratings": {"forwards":body.forwards,"midfield":body.midfield,"defence":body.defence},
                         "playstyle": body.playstyle};
 
         teams.push(newTeam);
@@ -125,6 +130,11 @@ app.post("/addfixture", (req,resp) => {
     //server-side validation
     const body = req.body;
     const errors = validatePostData(validFixtureFormat, body);
+    //must also check that opposition team is held in teams.json
+    teamNames = teams.map(team => team.name);
+    if(!teamNames.includes(body.opposition)){
+        errors.push({"opposition":"not a valid pre-existing team"})
+    }
 
     if(errors.length === 0){
         //if valid - create fixture object

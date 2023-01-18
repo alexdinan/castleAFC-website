@@ -162,7 +162,7 @@ async function addTeam(){
 
             if(valid){
                 const formContent = Object.fromEntries(new FormData(teamForm));
-            
+                console.log(formContent);
                 //send POST request to server
                 const resp = await fetch(endPointRoot + "addteam", {
                     method: "POST",
@@ -226,7 +226,7 @@ async function teamSelect(){
         try{
             const teams = JSON.parse(await (await fetch(endPointRoot + "teams")).text());
 
-            teamSelect.innerHTML = "<option selected>...</option>";
+            teamSelect.innerHTML = "";
             for(const team of teams){
                 teamSelect.innerHTML += `<option value="${team}">${team}</option>`;
             }
