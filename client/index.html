@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <title>Castle AFC website</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -60,7 +61,7 @@
 
             <div class="text-center mx-auto py-3 mt-5">
                 <h5 class="display-4 text-danger lead">Description:</h5>
-                <h5 class=" mb-5" id="errorDescription"></h5>
+                <h5 class=" mb-5" id="errorDescription">error</h5>
                 
                 <h5 class="display-4 lead text-danger">Cause:</h5>
                 <h5 class="mb-5" id="causeDescription">It is likely the server is temporarily down! Sorry.</h5>
@@ -74,7 +75,7 @@
         <div class="container-fluid wrapper pt-5 bg-grey2" id="aboutSection">
             <div class="row">
                 <div class="col-lg-6">
-                    <h5 class="display-3 mb-3 lead">About the club...</h3>
+                    <h5 class="display-3 mb-3 lead">About the club...</h5>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt urna quis pretium scelerisque. In hendrerit ante id arcu sodales aliquam. Nulla venenatis volutpat lorem, quis porttitor risus sodales ut. Etiam lorem ipsum, euismod sit amet justo et, faucibus ultrices neque. Duis gravida neque eget risus bibendum, sed aliquet sapien rutrum. Nam volutpat ut erat sit amet maximus. Ut urna nulla, bibendum vitae sapien a, lacinia ullamcorper turpis. Proin viverra et purus at pretium.</p>
                     <p>Sed consectetur vulputate purus, at mollis enim vehicula ut. Vivamus malesuada tincidunt blandit. Nullam eget tellus placerat, hendrerit enim sit amet, dapibus ante. Suspendisse pharetra magna vulputate, tincidunt nulla in, porta purus. Ut eu posuere neque. Cras a tellus risus. Quisque rhoncus quam eget ante egestas dignissim. Morbi eu elit semper, imperdiet nibh non, interdum augue.</p>
                     <p>Donec in leo iaculis, faucibus diam ut, volutpat dui. Vestibulum condimentum tortor ac sollicitudin ornare. Aenean vestibulum sagittis metus. Sed sodales elit nunc. Fusce sagittis semper efficitur. In sollicitudin risus urna, non dapibus turpis venenatis et. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque consectetur elementum feugiat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt urna quis pretium scelerisque.</p>     
@@ -139,7 +140,7 @@
                             <hr class="line-break">
                         </div>
 
-                        <form action="" id="teamForm" class="needs-validation" novalidate>
+                        <form action="#" id="teamForm" class="needs-validation" novalidate>
                             <div class="form-floating mb-4">
                                 <input type="text" id="name" name="name" class="form-control form-input" placeholder="e.g. Collingwood-A" required pattern="[A-Z].*-[A-Z]">
                                 <div class="invalid-feedback">Must be in the form College-Team</div>
@@ -188,7 +189,7 @@
                             <hr class="line-break">
                         </div>
 
-                        <form action="" id="fixtureForm" class="needs-validation" novalidate>
+                        <form action="#" id="fixtureForm" class="needs-validation" novalidate>
 
                             <div class="row mb-4">
                                 <div class="col">
@@ -226,8 +227,10 @@
                                     </div>
                                 </div>
                                 <div class="col-5">
-                                    <label for="teamSelector mb-5">Select Opposition <span class="required-asterisk">*</span></label>
-                                    <select name="opposition" id="teamSelector" class="form-control form-input" required></select>
+                                    <label for="teamSelector">Select Opposition <span class="required-asterisk">*</span></label>
+                                    <select name="opposition" id="teamSelector" class="form-control form-input" required>
+                                        <option value="" disabled selected>...</option>
+                                    </select>
                                     <div class="invalid-feedback">Required field - cannot be left blank</div>
                                 </div>
                             </div>
@@ -251,6 +254,7 @@
                     <div class="col" style="margin-right:2%;">
                         <h5 class="display-6 text-uppercase mb-3">About the Project</h5>
                         <p class="">This project was made by Alex Dinan, an undergraduate student of Computer Science at Durham University. Created as a project for the first year module, programming-black; This is a single-page style dynamic website focusing on the collegiate football league.</p>
+                        <a class="mt-3" href="https://documenter.getpostman.com/view/25418603/2s8ZDX5NpV">View API documentation here...</a>
                     </div>
                     <div class="col" style="margin-left:2%;">
                         <h5 class="display-6 text-uppercase">Technologies Used</h5>

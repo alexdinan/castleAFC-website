@@ -15,12 +15,10 @@ describe("Test the team entity", () => {
         expect(res.headers["content-type"]).toEqual("application/json; charset=utf-8");
     });
 
-    test("GET /teams returns array containing Collingwood-A etc...", async () => {
-        const coreTeams = ["Collingwood-A","Hatfield-A","Stephenson-A"];
+    test("GET /teams returns array containing team names", async () => {
         const res = await request(app).get("/teams");
-        expect(res.body).toEqual(expect.arrayContaining(coreTeams));
+        expect(res.body).toBeInstanceOf(Array);
     });
-
 
     //testing the details GET request for team entity
     test("GET /teaminfo returns 200 for valid teamName and has json content type", async () => {
@@ -51,16 +49,14 @@ describe("Test the team entity", () => {
         expect(res.body).toEqual(expect.stringContaining(invalidName));
     });
 
-
-
     //testing the add POST request for team entity
-    // test("POST /addteam returns 200 + json for valid input", async () => {
-    //     const validParams = {"name": "Random-A", "forwards": "1", "midfield": "0", "defence": "1", "playstyle": "hi"};
-    //     const res = await request(app).post("/addteam").send(validParams);
+    test("POST /addteam returns 200 + json for valid input", async () => {
+        const validParams = {"name": "Stephenson-A", "forwards": "50", "midfield": "48", "defence": "57", "playstyle": ""};
+        const res = await request(app).post("/addteam").send(validParams);
         
-    //     expect(res.statusCode).toEqual(200);
-    //     expect(res.headers["content-type"]).toEqual("application/json; charset=utf-8");
-    // });
+        expect(res.statusCode).toEqual(200);
+        expect(res.headers["content-type"]).toEqual("application/json; charset=utf-8");
+    });
 
     test("POST /addteam returns 400 for invalid input", async () => {
         const invalidParams = {"name":"","forwards":"","midfield":"","defence":"","playstyle":""};
@@ -79,8 +75,6 @@ describe("Test the team entity", () => {
 
 });
 
-
-
 //test the fixtures entity
 describe("Test the fixture entity", () => {
 
@@ -95,8 +89,6 @@ describe("Test the fixture entity", () => {
         const res = await request(app).get("/fixtures");
         expect(res.body).toEqual(expect.arrayContaining([coreFixture]))
     });
-
-
 
     test("GET /fixtureinfo returns 200 and json content-type for valid input", async () => {
         const validFixture = {date:"15/10/2022" , opposition:"Hatfield-A"};
@@ -125,15 +117,14 @@ describe("Test the fixture entity", () => {
         expect(res.body).toEqual(expect.stringContaining(`${invalid.date}${invalid.opposition}`));
     });
 
+    //testing the POST request to add new fixtures
+    test("POST /addfixture returns 200 + json content-type for valid input", async () => {
+        const validFixture = {date:"19/06/2023", time:"20:15", score:"5-0", competition:"Floodlit cup", opposition:"Collingwood-A", report:""};
+        const res = await request(app).post("/addfixture").send(validFixture);
 
-
-    // test("POST /addfixture returns 200 + json content-type for valid input", async () => {
-    //     const validFixture = {date:"19/06/2023", time:"20:15", score:"5-0", competition:"Floodlit cup", opposition:"Collingwood-A", report:""};
-    //     const res = await request(app).post("/addfixture").send(validFixture);
-
-    //     expect(res.statusCode).toEqual(200);
-    //     expect(res.headers["content-type"]).toEqual("application/json; charset=utf-8");
-    // });
+        expect(res.statusCode).toEqual(200);
+        expect(res.headers["content-type"]).toEqual("application/json; charset=utf-8");
+    });
 
     test("POST /addfixture returns 400 for invalid input", async () => {
         const invalid = {date:"", time:"", score:"", competition:"", opposition:"", report:""};

@@ -162,7 +162,7 @@ async function addTeam(){
 
             if(valid){
                 const formContent = Object.fromEntries(new FormData(teamForm));
-                console.log(formContent);
+
                 //send POST request to server
                 const resp = await fetch(endPointRoot + "addteam", {
                     method: "POST",
@@ -198,6 +198,7 @@ async function addFixture(){
 
             if(valid){
                 const formContent = Object.fromEntries(new FormData(fixtureForm))
+                
                 //send POST request to server
                 const resp = await fetch(endPointRoot + "addfixture", {
                     method: "POST",
