@@ -1,6 +1,7 @@
 // import express + call constructor
 const express = require("express");
 const app = express();
+const path = require("path");
 const fs = require("fs");
 
 // serve static html directly to client (middleware)
@@ -10,8 +11,10 @@ app.use(express.static("client"));
 app.use(express.json());
 
 // get teams from json file
-const teams = require("./teams.json");
-const fixtures = require("./fixtures.json");
+const teamFileName = path.join(__dirname, "teams.json");
+const fixtureFileName = path.join(__dirname, "fixtures.json");
+const teams = require(teamFileName);
+const fixtures = require(fixtureFileName);
 
 const validTeamFormat = {
                         name: { regex: /^[A-Z].*-[A-Z]$/, msg: "College name is invalid - must be of form Collegename-X" },
@@ -96,7 +99,7 @@ app.post("/addteam", (req, resp) => {
 
         teams.push(newTeam);
         // persistent => append to json file (synchronous)
-        fs.writeFileSync("./teams.json", JSON.stringify(teams));
+        fs.writeFileSync(teamFileName, JSON.stringify(teams));
         resp.status(200).json(teams);
     } else {
         // bad request - send back errors
@@ -128,7 +131,7 @@ app.post("/addfixture", (req, resp) => {
 
         fixtures.push(newFixture);
         // write to json file
-        fs.writeFileSync("./fixtures.json", JSON.stringify(fixtures));
+        fs.writeFileSync(fixtureFileName, JSON.stringify(fixtures));
         resp.status(200).json(fixtures);
     } else {
         // bad request - send back errors
