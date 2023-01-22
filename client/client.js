@@ -117,9 +117,11 @@ async function getFixtureDetails(date, oppo){
         scoreRow.className += " bg-white";
         //add color to score - depending on w/d/l
         let color = "";
-        if (f.goalsFor > f.goalsAgainst){
+        const gf = parseInt(f.goalsFor);
+        const ga = parseInt(f.goalsAgainst);
+        if (gf > ga){
             color="text-success";
-        }else if(f.goalsFor === f.goalsAgainst){
+        }else if(gf === ga){
             color="text-warning";
         }else{
             color="text-danger";
