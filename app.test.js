@@ -119,7 +119,7 @@ describe("Test the fixture entity", () => {
 
     //testing the POST request to add new fixtures
     test("POST /addfixture returns 200 + json content-type for valid input", async () => {
-        const validFixture = {date:"19/06/2023", time:"20:15", score:"5-0", competition:"Floodlit cup", opposition:"Collingwood-A", report:""};
+        const validFixture = {date:"19/06/2023", time:"20:15", score:"5-0", competition:"Premier League", opposition:"Collingwood-A", report:""};
         const res = await request(app).post("/addfixture").send(validFixture);
 
         expect(res.statusCode).toEqual(200);
