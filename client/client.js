@@ -23,7 +23,6 @@ async function listTeams(){
         }
 
     }catch(error){
-        //add 404 handling
         errorHandler(error);
     }
 }
