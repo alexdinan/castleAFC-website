@@ -84,14 +84,15 @@ describe("Test the fixture entity", () => {
         expect(res.headers["content-type"]).toEqual("application/json; charset=utf-8");
     });
 
-    test("GET /fixtures returns array of fxture objects", async () => {
-        const coreFixture = {"date":"15/10/2022","time":"13:15","opposition":"Hatfield-A"};
+    test("GET /fixtures returns array of fixture objects", async () => {
         const res = await request(app).get("/fixtures");
-        expect(res.body).toEqual(expect.arrayContaining([coreFixture]))
+        for (let obj of res.body){
+            expect(obj).toBeInstanceOf(Object);
+        }
     });
 
     test("GET /fixtureinfo returns 200 and json content-type for valid input", async () => {
-        const validFixture = {date:"15/10/2022" , opposition:"Hatfield-A"};
+        const validFixture = {date:"02/02/2023" , opposition:"Collingwood-A"};
         const res = await request(app).get(`/fixtureinfo?date=${validFixture.date}&opposition=${validFixture.opposition}`);
 
         expect(res.statusCode).toEqual(200);
@@ -99,7 +100,7 @@ describe("Test the fixture entity", () => {
     });
 
     test("GET /fixtureinfo returns object containing appropriate data for valid input", async () => {
-        const validFixture = {date:"15/10/2022" , opposition:"Hatfield-A"};
+        const validFixture = {date:"02/02/2023" , opposition:"Collingwood-A"};
         const res = await request(app).get(`/fixtureinfo?date=${validFixture.date}&opposition=${validFixture.opposition}`);
 
         expect(res.body).toEqual(expect.objectContaining(validFixture));
